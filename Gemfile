@@ -46,3 +46,6 @@ end
 
 #Use Devise
 gem "devise", "~> 3.0.2"
+
+#Use OpenTok
+gem "opentok", "~> 0.1.1"
