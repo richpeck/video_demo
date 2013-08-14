@@ -1,0 +1,18 @@
+<h1>Video Conference Rooms</h1>
+
+<div class="create">
+	<%= form_for(@new_video) do |f| %>
+	Name: <%= f.text_field :name %><br/><br/>
+	Public? <%= f.check_box :public %><br/><br/>
+
+	<%= f.submit %>
+<% end %>
+</div>
+
+<% @videos.each do |video| %>
+
+	<p>
+		<%= link_to "#{video.name}", video_path(:id => video.id) %>
+	</p>
+	
+<% end %>
