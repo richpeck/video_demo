@@ -1,4 +1,4 @@
-<h1>Video Conference Rooms</h1>
+
 
 <div class="create">
 	<%= form_for(@new_video) do |f| %>
@@ -9,10 +9,12 @@
 <% end %>
 </div>
 
-<% @videos.each do |video| %>
+<div>
+	<% @videos.each do |video| %>
 
-	<p>
-		<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
-	</p>
-	
-<% end %>
+		<p>
+			<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
+		</p>
+		
+	<% end %>
+</div>

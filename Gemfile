@@ -49,3 +49,8 @@ gem "devise", "~> 3.0.2"
 #Use OpenTok
 gem "opentok", "~> 0.1.1"
 
+#Thin Webserver for ActionController:Live
+#gem "thin", "~> 1.5.1"
+
+#Authorization
+gem "cancan", "~> 1.6.10"

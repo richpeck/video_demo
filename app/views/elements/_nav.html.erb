@@ -1,0 +1,22 @@
+<div class="nav_bar">
+
+	<div class="user_options">
+		<% if user_signed_in? %>
+			<%= link_to "Profile", users_path, :method => "get" %>
+			<div class="sep">|</div>
+			<%= link_to "Logout", logout_path %>
+		<% else %>
+			<%= link_to "Register", register_path %>
+			<div class="sep">|</div>
+			<%= link_to "Login", login_path %>
+		<% end %>
+	</div>
+	
+	<div class="page_options">
+		<%= link_to "home", root_path %>
+		<div class="sep">▪</div>
+		<%= link_to "members", members_path %>
+		<div class="sep">▪</div>
+		<%= link_to "about", members_path %>
+	</div>
+</div>

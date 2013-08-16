@@ -1,0 +1,17 @@
+<% if @members.empty? %>
+
+	No members here!
+	
+<% else %>
+
+	<div>
+		<% @members.each do |member| %>
+
+			<p>
+				<%= member.email %>
+			</p>
+			
+		<% end %>
+	</div>
+	
+<% end %>

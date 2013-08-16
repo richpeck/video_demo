@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>VideoDemo</title>
+  <title>Video Conferencing App</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+	<div class="content_area">
+		<%= render "elements/nav" %>
+		
+		<div class="main">
+			<%= yield %>
+		</div>
+		
+		<%= render "elements/footer" %>
+	</div>
 
 </body>
 </html>
