@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+ body {
+	padding: 0 25%;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+ }
+ 
+ a { text-decoration: none; }
+ 
+ 
+ /** Content Area **/
+ .content_area {
+	display: block;
+	margin: 10px 0;
+	padding: 0;
+ }
+ 
+ /** Logo Area **/
+ .logo {
+	display: block;
+	font-size: 13px;
+	margin: 10px 0;
+ }
+ .logo img {
+	vertical-align: middle;
+ }
+ 
+ /** Navigation Bar **/
+ .nav_bar {
+	display: block;
+	background: #ff0;
+	color: #fff;
+	padding: 15px 20px; 
+	border-radius: 5px;
+	background-image: linear-gradient(bottom, #DE141E 4%, #C71E56 52%);
+	background-image: -o-linear-gradient(bottom, #DE141E 4%, #C71E56 52%);
+	background-image: -moz-linear-gradient(bottom, #DE141E 4%, #C71E56 52%);
+	background-image: -webkit-linear-gradient(bottom, #DE141E 4%, #C71E56 52%);
+	background-image: -ms-linear-gradient(bottom, #DE141E 4%, #C71E56 52%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.04, #DE141E),
+		color-stop(0.52, #C71E56)
+	);
+	text-transform: lowercase;
+	margin-bottom: 20px;
+ }
+ .nav_bar a {
+ 	color: #fff; 
+	transition: opacity 0.15s ease;
+	display: inline-block;
+	font-size: 14px;
+ }
+ .nav_bar a:hover 	{ opacity: 0.8; }
+ .nav_bar .sep {
+	display: inline-block;
+	margin: 0 3px;
+	font-size: 11px;
+ }
+
+ .nav_bar .page_options a.last:after 	{ content: ""; }
+ 
+ .nav_bar .user_options {
+	display: block;
+	float: right;
+ }
+ .nav_bar .user_options .sep {
+	margin: 0 5px;
+	display: inline-block;
+ }
+ .nav_bar .user_options a { font-size: 13px; }
+ 
+ 
+ /** Main Area **/
+ .main {
+	display: block;
+	padding: 0 20px;
+	font-size: 13px;
+ }
+ 
+ /** Footer **/
+ .footer {
+	display: block;
+	font-size: 13px;
+	border-top: 1px solid #ccc;
+	text-align: center;
+	padding: 0 !important;
+	text-transform: lowercase;
+	color: #aaa;
+	margin-top: 20px;
+ }
+#videobox {
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  margin-right: auto;
+  margin-left: auto; }
+
+#videobox object {
+  float: left; }
