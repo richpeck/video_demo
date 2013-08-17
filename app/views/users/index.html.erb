@@ -3,21 +3,3 @@ Welcome <b><%= @user.email %></b>!
 	<p>You registered <b><%= time_ago_in_words( @user.created_at ) %></b> ago</p>
 	<p>You have <b><%= number_to_currency(@credits, :unit => "£")  %> Credits</b> in your account</p>
 	
-	<% if @profile.avatar_file_name.nil? %>
-	
-		<!-- Form For Profile Image Upload -->
-		<%= form_for :upload, :html => {:multipart => true}, :method => :put, url: profile_path(current_user.id) do |f| %>
-				<%= f.file_field :avatar %>
-				<%= f.submit "Upload" %>
-		<% end %>
-		
-	<% else %>
-		<%= image_tag( @profile.avatar.url ) %>
-		
-		<!-- Form For Profile Image Upload -->
-		<%= form_for :upload, :html => {:multipart => true}, :method => :put, url: profile_path(current_user.id) do |f| %>
-				<%= f.file_field :avatar %>
-				<%= f.submit "Upload" %>
-		<% end %>
-		
-	<% end %>
