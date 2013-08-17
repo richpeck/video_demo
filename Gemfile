@@ -54,3 +54,6 @@ gem "opentok", "~> 0.1.1"
 
 #Authorization
 gem "cancan", "~> 1.6.10"
+
+#Paperclip
+gem "paperclip", "~> 3.5.1"

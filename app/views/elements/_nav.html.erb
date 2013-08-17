@@ -2,7 +2,11 @@
 
 	<div class="user_options">
 		<% if user_signed_in? %>
-			<%= link_to "Profile", users_path, :method => "get" %>
+			<%= link_to number_to_currency(@credits_balance, :unit => "£") + " Credits", "/profile" %>
+			<div class="sep">|</div>
+			<%= link_to "Invite Friends", "/profile" %>
+			<div class="sep">|</div>
+			<%= link_to "Profile", "/profile" %>
 			<div class="sep">|</div>
 			<%= link_to "Logout", logout_path %>
 		<% else %>
@@ -15,7 +19,7 @@
 	<div class="page_options">
 		<%= link_to "home", root_path %>
 		<div class="sep">▪</div>
-		<%= link_to "members", members_path %>
+		<%= link_to "experts", members_path %>
 		<div class="sep">▪</div>
 		<%= link_to "about", members_path %>
 	</div>

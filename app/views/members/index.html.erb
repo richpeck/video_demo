@@ -4,12 +4,12 @@
 	
 <% else %>
 
-	<div>
+	<div class="members">
 		<% @members.each do |member| %>
 
-			<p>
+			<div class="member">
 				<%= member.email %>
-			</p>
+			</div>
 			
 		<% end %>
 	</div>

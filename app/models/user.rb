@@ -5,27 +5,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 		 
-   has_and_belongs_to_many :roles
+   has_and_belongs_to_many :role, :class_name => 'Role'
+   has_many :credits, :class_name => 'Credit', :foreign_key => 'user_id'
+   has_one :profile, :class_name => 'Profile', :foreign_key => 'user_id'
    
    before_create :role_detect
    
    private
    def role_detect
-		if defined?(self.role)
-		
-			case self.role
-			when admin
-				self.admin = 1
-			when member 
-				self.member = 1
-			when user
-				self.user = 1			
-			else
-				self.user = 1
-			end
-			
-		else
-			self.user = 1
+		if self.role.blank?
+			self.role = 3
 		end
    end
    

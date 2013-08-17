@@ -11,12 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130816140409) do
+ActiveRecord::Schema.define(version: 20130817141352) do
+
+  create_table "credits", force: true do |t|
+    t.integer  "user_id"
+    t.decimal  "value",       precision: 10, scale: 2
+    t.string   "description"
+    t.text     "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -32,9 +56,6 @@ ActiveRecord::Schema.define(version: 20130816140409) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin"
-    t.boolean  "member"
-    t.boolean  "user"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

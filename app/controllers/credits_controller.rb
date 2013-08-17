@@ -1,0 +1,3 @@
+class CreditsController < ApplicationController
+
+end
