@@ -12,6 +12,7 @@ Welcome <b><%= @user.email %></b>!
 		<% end %>
 		
 	<% else %>
+		<%= image_tag( @profile.avatar.url ) %>
 		
 		<!-- Form For Profile Image Upload -->
 		<%= form_for :upload, :html => {:multipart => true}, :method => :put, url: profile_path(current_user.id) do |f| %>
