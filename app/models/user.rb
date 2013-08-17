@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
    private
    def role_detect
 		if self.role.blank?
-			self.role = 3
+			self.role << Role.find('3')
 		end
    end
+
    
 end
