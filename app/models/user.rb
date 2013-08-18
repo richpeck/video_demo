@@ -10,12 +10,18 @@ class User < ActiveRecord::Base
    has_one :profile, :class_name => 'Profile', :foreign_key => 'user_id'
    
    before_create :role_detect
+   before_create :profile_detect
    
    private
    def role_detect
 		if self.role.blank?
 			self.role << Role.find('3')
 		end
+   end
+   
+   private 
+   def profile_detect
+		build_profile 
    end
 
    

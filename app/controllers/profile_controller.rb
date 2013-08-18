@@ -1,9 +1,11 @@
 class ProfileController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def update
-		@profile = Profile.find(params[:id])
-		@profile.update(upload_params)
-		redirect_to root_path
+		@profile = User.joins(:profile).find(current_user.id)
+		@profile.profile.update(upload_params)
+		redirect_to users_path
 	end
 	
 	private
