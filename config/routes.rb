@@ -7,8 +7,10 @@ VideoDemo::Application.routes.draw do
   end
   
   get '/users', to: 'users#index'
-  get '/members', to: 'members#index'
   get '/profile', to: 'users#index'
+  
+  resources :members, :only => ['index', 'show'] 
+  
   devise_for :users
   devise_scope :user do
 	get "/login" => "devise/sessions#create", :method => "get"

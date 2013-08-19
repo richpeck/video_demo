@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :user_credits
+  before_filter :categories
   
   private
   def user_credits
@@ -11,6 +12,11 @@ class ApplicationController < ActionController::Base
 		@user = User.find(current_user.id)
 		@credits_balance = @user.credits.sum('value')
 	  end
+  end
+  
+  private
+  def categories
+	@categories = Category.all
   end
   
 end

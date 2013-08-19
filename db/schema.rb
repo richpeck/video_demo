@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130817141352) do
+ActiveRecord::Schema.define(version: 20130819083416) do
+
+  create_table "categories", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_users", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "user_id"
+  end
 
   create_table "credits", force: true do |t|
     t.integer  "user_id"
@@ -24,6 +35,7 @@ ActiveRecord::Schema.define(version: 20130817141352) do
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"

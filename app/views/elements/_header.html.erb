@@ -1,0 +1,25 @@
+<div class="header">
+	<div class="information">
+		<div class="user_options">
+			<% if user_signed_in? %>
+				<%= link_to number_to_currency(@credits_balance, :unit => "£") + " Credits", "/profile" %>
+				<%= link_to "Invite Friends", "/profile" %>
+				<%= link_to "Profile", "/profile" %>
+				<%= link_to "Logout", logout_path %>
+			<% else %>
+				<%= link_to "Register", register_path %>
+				<div class="sep">|</div>
+				<%= link_to "Login", login_path %>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="nav_bar">
+	
+		<%= link_to "HOME", root_path %>
+		<% @categories.each do |category| %>
+			<%= link_to category.title, member_path(category.id) %>
+		<% end %>
+		
+	</div>
+</div>
