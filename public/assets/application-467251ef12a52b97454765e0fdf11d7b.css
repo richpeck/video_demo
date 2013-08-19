@@ -1,0 +1,307 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+ html, body { height: 100%; }
+ body {
+	margin: 0;
+	padding: 0;
+	font-family: 'proxima_nova_regular';
+ }
+@font-face {
+    font-family: 'proxima_nova_regular';
+    src: url('fonts/proxima_nova_reg-webfont.eot');
+    src: url('fonts/proxima_nova_reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proxima_nova_reg-webfont.woff') format('woff'),
+         url('fonts/proxima_nova_reg-webfont.ttf') format('truetype'),
+         url('fonts/proxima_nova_reg-webfont.svg#proxima_nova_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'proxima_novalight';
+    src: url('fonts/proxima_nova_light-webfont.eot');
+    src: url('fonts/proxima_nova_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proxima_nova_light-webfont.woff') format('woff'),
+         url('fonts/proxima_nova_light-webfont.ttf') format('truetype'),
+         url('fonts/proxima_nova_light-webfont.svg#proxima_novalight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+ 
+ 
+ a { text-decoration: none; }
+ 
+ input {
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 12px;
+	color: #111;
+	padding: 7px;
+	transition: border 0.25s ease;
+ }
+ input:hover,
+ input:focus {
+	outline: none;
+	border: 1px solid #aaa;
+ }
+ input[type="submit"]:hover {
+	cursor: pointer;
+ }
+ 
+ /** Page Wrapper (for 100% height) **/
+ .page_wrapper {
+	min-height: 100%;
+	margin-bottom: -285px; 
+	padding-bottom: 40px;
+ }
+ .page_wrapper:after { 
+	content: "";
+	display: block;
+ }
+ 
+ /** Content Wrapper **/
+ .content_wrapper {
+	width: 60%;
+	margin: auto;
+ }
+ 
+ /** Header Area **/
+ .header {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+ }
+ .header:after {
+	display: block;
+	width: 100%; 
+	position: absolute;
+	bottom: 38px;
+	content: url('header_shadow.png');
+	z-index: 5;
+ }
+ .header img {
+	display: block;
+	padding: 0;
+	margin: 0;
+ }
+ 
+ /** Header Info **/
+ .header_wrapper {
+	width: 55%;
+	margin: auto;
+ }
+ .header .information {
+	display: block;
+	height: 250px;
+	padding-bottom: 20px;
+	position: relative;
+	z-index: 1;
+	background: url('header/1.png') bottom repeat-x;
+ }
+ 
+ .header .welcome {
+	display: inline-block;
+	float: left;
+	width: 375px;
+	color: #fff;
+	margin-top: 20px;
+ }
+ .header .welcome h2 {
+	display: block;
+	font-weight: bold;
+	padding-bottom: 0;
+	margin: 0;
+	font-size: 28px;
+	font-weight: bold;
+ }
+ .header .welcome a { color: #fff; }
+ .header .welcome .blurb {
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	line-height: 18px;
+ }
+ 
+ .header .information .user_options {
+	display: inline-block;
+	float: right;
+	width: 250px;
+ }
+
+ .user_options {
+	margin-top: 40px;
+ }
+ .user_options a {
+	display: inline-block;
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	border-radius: 5px;
+	width: 220px;
+	height: 65px;
+	line-height: 65px;
+	padding-left: 90px;
+	margin: 0 0 10px 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border-bottom: 2px solid;
+	-moz-transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	position: relative;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+ }
+  .user_options a:active {
+	border-bottom-width: 0;
+	top: 1px;
+	padding-top: 1px;
+  }
+ 
+ .user_options a#login 			{
+	background: #ed5153 url('login_icon.png') 10% center no-repeat;
+	border-color: #b62527;
+ }
+ .user_options a#login:hover { background-color: #ed5657; }
+ .user_options a#register 		{
+	background: #51aded url('register_icon.png') 10% center no-repeat;
+	border-color: #227ab7;	
+ }
+ 
+ .profile_options { float: right; }
+ .profile_options a {
+	display: inline-block;
+	color: #fff;
+	font-size: 11px;
+	transition: opacity 0.15s ease;
+	padding: 5px;
+ }
+ .profile_options a:hover {
+	opacity: 0.8;
+ }
+
+ 
+ /** Nav Bar **/
+ .nav_bar {
+	display: block;
+	background: #ff0;
+	color: #fff;
+	padding: 0px 20px; 
+	background: url('navigation_bg.png') repeat-x;
+	text-transform: lowercase;
+	position: relative;
+	bottom: 50px;
+	z-index: 5;
+	text-align: center;
+	min-height: 50px;
+	max-height: 50px;
+ }
+ .nav_bar a {
+ 	color: #fff; 
+	transition: opacity 0.25s ease;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 17px 10px 13px 10px;
+ }
+ 
+ .nav_bar #links 	{
+	display: inline-block;
+	width: auto;
+ }
+
+ .nav_bar #links.active a,
+ .nav_bar #links:hover a.current,
+ .nav_bar #links:hover a 	{ opacity: 0.6; }
+ 
+ .nav_bar #links a.current,
+ .nav_bar #links a.current:hover, 
+ .nav_bar #links a:hover  	{ opacity: 1; }
+ 
+ .nav_bar #links a:active  	{ opacity: 0.8; }
+
+ 
+ 
+ 
+ /** Main Area **/
+ .main {
+	display: block;
+	padding: 0 20px;
+	font-size: 13px;
+ }
+ 
+ /** Members Display **/
+ .members {
+	display: block;
+ }
+ .members > div {
+	display: inline-block;
+	width: 25%;
+	height: 250px;
+	text-align: center;
+ }
+ 
+ /** Footer **/
+ .footer, .page_wrapper:after { height: 285px; }
+ .footer {
+	display: block;
+	background: #ececec;
+	text-align: center;
+	text-transform: lowercase;
+	color: #424242;
+	padding: 20px 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+ }
+
+ .footer table {
+	height: 100%;
+ }
+ .footer table tr td {
+	width: 25%;
+	text-align: left;
+	opacity: 0.7;
+	padding-top: 5px;
+	transition: opacity 0.2s ease;
+	padding: 30px 20px 0 20px;
+ }	
+ .footer td  p {
+	font-size: 15px;
+	display: block;
+	padding-top: 0;
+	margin-top: 0;
+ }
+ .footer tr td p.title {
+	font-size: 18px;
+	margin: 0;
+	padding: 0 0 5px 0;
+	font-weight: bold;
+ }
+#videobox {
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  max-height: 600px;
+  margin-right: auto;
+  margin-left: auto; }
+
+#videobox object {
+  float: left; }
