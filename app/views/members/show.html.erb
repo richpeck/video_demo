@@ -1,11 +1,11 @@
-<% if @members.empty? %>
+<% if @category_members.empty? %>
 
 	No experts here OMG!
 	
 <% else %>
 
 	<div class="members">
-		<% @members.each do |member| %>
+		<% @category_members.each do |member| %>
 
 			<div class="member">
 				<%= member.email %>

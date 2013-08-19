@@ -5,7 +5,7 @@ class MembersController < ApplicationController
 	end
 
 	def show 
-		@members = User.includes(:role, :categories).where(:roles_users => {role_id: '2'}, :categories_users => {category_id: params[:id]})
+		@category_members = User.includes(:role, :categories).where(:roles_users => {role_id: '2'}, :categories_users => {category_id: params[:id]})
 	end
 	
 end

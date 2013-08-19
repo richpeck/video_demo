@@ -1,25 +1,41 @@
 <div class="header">
 	<div class="information">
-		<div class="user_options">
+		<div class="header_wrapper">
 			<% if user_signed_in? %>
-				<%= link_to number_to_currency(@credits_balance, :unit => "£") + " Credits", "/profile" %>
-				<%= link_to "Invite Friends", "/profile" %>
-				<%= link_to "Profile", "/profile" %>
-				<%= link_to "Logout", logout_path %>
+		
+				<div class="profile_options">
+						<%= link_to number_to_currency(@credits_balance, :unit => "£") + " Credits", "/profile" %>
+						<%= link_to "Invite Friends", "/profile" %>
+						<%= link_to "Profile", "/profile" %>
+						<%= link_to "Logout", logout_path %>
+				</div>
+			
 			<% else %>
-				<%= link_to "Register", register_path %>
-				<div class="sep">|</div>
-				<%= link_to "Login", login_path %>
+			
+				<div class="welcome">
+					<h2>welcome!</h2>
+					<div class="blurb">
+						<p>x.press connects you with your favourite celebrities & experts in every area of life</p>
+						<p>learn the insider tricks & get inside the head of your heroes! our cross-platform video & audio streaming app connects you wherever you are</p>
+					</div>
+				</div>
+			
+				<div class="user_options">
+						<%= link_to "Login", login_path, id: "login" %>
+						<%= link_to "Register", register_path, id: "register" %>
+				</div>
+				
+				<div class="clear">&nbsp;</div>
 			<% end %>
 		</div>
 	</div>
-
-	<div class="nav_bar">
 	
-		<%= link_to "HOME", root_path %>
-		<% @categories.each do |category| %>
-			<%= link_to category.title, member_path(category.id) %>
-		<% end %>
-		
+	<div class="nav_bar">
+		<div id="links" <%= if (@category_members || current_page?(root_path)) then "class=active" end %>>
+			<%= link_to "home", root_path, class: active_class?(root_path) %>
+			<% @categories.each do |category| %>
+				<%= link_to category.title, member_path(category.id), class: active_class?(member_path(category.id)) %>
+			<% end %>
+		</div>
 	</div>
 </div>

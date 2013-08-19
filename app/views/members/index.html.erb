@@ -8,7 +8,7 @@
 		<% @members.each do |member| %>
 
 			<div class="member">
-				<%= member.email %>
+				<%= link_to member.email, user_path(member.id) %>
 			</div>
 			
 		<% end %>

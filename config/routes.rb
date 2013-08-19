@@ -5,10 +5,10 @@ VideoDemo::Application.routes.draw do
   resources :profile, :path => '/profile', :path_names => { :edit => 'settings' }, :only => ['update'] do
     #resources :photos
   end
-  
-  get '/users', to: 'users#index'
+
   get '/profile', to: 'users#index'
-  
+
+  resources :users, :only => ['show']
   resources :members, :only => ['index', 'show'] 
   
   devise_for :users
