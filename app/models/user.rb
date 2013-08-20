@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
    has_one :profile, :class_name => 'Profile', :foreign_key => 'user_id'
    has_many :credits, :class_name => 'Credit', :foreign_key => 'user_id'
    has_and_belongs_to_many :categories, :class_name => 'Category'
+   has_many :videos, :class_name => 'Video', :foreign_key => 'user_id'
    
    before_create :role_detect
    before_create :profile_detect

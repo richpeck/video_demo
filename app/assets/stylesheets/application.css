@@ -249,19 +249,35 @@
  /** Members Display **/
  .members {
 	display: block;
+	text-align: center;
  }
- .members > div {
+ .members > div a {
 	display: inline-block;
 	width: 25%;
 	height: 250px;
 	text-align: center;
+	opacity: 0.8;
+	color: #fff;
+	background: #000;
+	padding: 120px 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	transition: opacity 0.25s ease;
+	-webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
  }
+ .members > div a:hover {
+	opacity: 1;
+ }
+
  
  /** Footer **/
  .footer, .page_wrapper:after { height: 285px; }
  .footer {
 	display: block;
 	background: #ececec;
+	border-top: 2px solid #E0E0E0;
 	text-align: center;
 	text-transform: lowercase;
 	color: #424242;
@@ -280,7 +296,7 @@
 	opacity: 0.7;
 	padding-top: 5px;
 	transition: opacity 0.2s ease;
-	padding: 30px 20px 0 20px;
+	padding: 0 20px;
  }	
  .footer td  p {
 	font-size: 15px;

@@ -1,6 +1,6 @@
 <% if @category_members.empty? %>
 
-	No experts here OMG!
+	No experts yet OMG!
 	
 <% else %>
 
@@ -8,7 +8,7 @@
 		<% @category_members.each do |member| %>
 
 			<div class="member">
-				<%= member.email %>
+				<%= link_to member.email, user_path(member.id) %>
 			</div>
 			
 		<% end %>

@@ -13,6 +13,22 @@ Welcome <b><%= @user.email %></b>!
 		<% end %>
 	</ul>
 	
+	<hr />
+	<div class="container">
+		<% @videos.each do |video_room| %>
+			<%= link_to "#{video_room.name}", video_path(video_room.id), :method => "get" %>
+		<% end %>
+	</div>
+	<div class="container">
+		<%= form_for(@new_video) do |f| %>
+			Name: <%= f.text_field :name %><br/><br/>
+			Public? <%= f.check_box :public %><br/><br/>
+
+			<%= f.submit %>
+		<% end %>
+	</div>
+	
+	<hr />
 	<% if !@profile.avatar_file_name.nil? %>
 		<%= image_tag( @profile.avatar.url ) %>	
 	<% end %>	

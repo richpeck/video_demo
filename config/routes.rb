@@ -7,9 +7,6 @@ VideoDemo::Application.routes.draw do
   end
 
   get '/profile', to: 'users#index'
-
-  resources :users, :only => ['show']
-  resources :members, :only => ['index', 'show'] 
   
   devise_for :users
   devise_scope :user do
@@ -17,5 +14,8 @@ VideoDemo::Application.routes.draw do
 	get "/register" => "devise/registrations#new", :method => "get"
 	get "/logout" => "devise/sessions#destroy", :method => "delete"
   end
-  
+
+  resources :users, :only => ['index', 'show'], :path_names => { :index => 'profile' }
+  resources :members, :only => ['index', 'show'] 
+
 end

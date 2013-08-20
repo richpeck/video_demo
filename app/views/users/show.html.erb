@@ -1,2 +1,6 @@
 Page for <b><%= @user.email %></b>!
 <hr />
+
+	<% @videos.each do |video| %>
+		<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
+	<% end %>
