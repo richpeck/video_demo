@@ -1,14 +1,40 @@
 <div class="footer">
 	<table class="content_wrapper">
 		<tr>
-			<td>hey</td>
+			<td class="main_links">
+				<%= link_to "home", root_path, :id => "home" %>
+				<%= link_to "support", root_path, :id => "support" %>
+				<%= link_to "pricing", root_path, :id => "pricing" %>
+				<%= link_to "how it works", root_path, :id => "how" %>
+				<%= link_to "terms of service", root_path, :id => "tos" %>
+				<%= link_to "privacy", root_path, :id => "privacy" %>
+			</td>
 			<td>
-				<p class="title">about</p>
+				<p class="title">company</p>
 				<p>xpress is a new way to talk to the people you love!</p>
 				<p>the trail-blazers, leaders & inspirations in any area of life have a wealth of knowledge waiting to be unearthed & this is the perfect way to do it :)</p>
 			</td>
-			<td>hey</td>
-			<td>hey</td>
+			<td>
+				<p class="title">join the fun!</p>
+				<div class="links">
+					<%= link_to image_tag("app_store.png"), "http://www.google.com" %>
+					<%= link_to image_tag("google_store.png"), "http://www.google.com" %>
+					<%= link_to image_tag("windows_store.png"), "http://www.google.com" %>
+					<%= link_to image_tag("register_store.png"), register_path %>
+				</div>
+			</td>
+			<td>
+				<p class="title">connect</p>
+				<div class="social_icons">
+					<%= link_to "", "http://www.facebook.com", :id => "facebook" %>
+					<%= link_to "", "http://www.facebook.com", :id => "twitter" %>
+					<%= link_to "", "http://www.facebook.com", :id => "pinterest" %>
+					<%= link_to "", "http://www.facebook.com", :id => "googleplus" %>
+					<%= link_to "", "http://www.facebook.com", :id => "fusion" %>
+					<%= link_to "", "http://www.facebook.com", :id => "tumblr" %>
+				</div>
+				<p class="title">say hi!</div>
+			</td>
 		</tr>
 	</table>
 </div>

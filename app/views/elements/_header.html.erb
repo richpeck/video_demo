@@ -1,6 +1,6 @@
 <div class="header">
-	<div class="information">
-		<div class="header_wrapper">
+	<div class="information <%= "user" if (user_signed_in?) %>">
+		<div class="content_wrapper">
 			<% if user_signed_in? %>
 		
 				<div class="profile_options">
