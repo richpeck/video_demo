@@ -9,10 +9,9 @@
 				</div>
 		
 				<div class="profile_options">
-						<%= link_to number_to_currency(@credits_balance, :unit => "£") + " Credits", "/profile" %>
-						<%= link_to "Invite Friends", "/profile" %>
-						<%= link_to "Profile", "/profile" %>
-						<%= link_to "Logout", logout_path %>
+						<%= link_to number_to_currency(@credits_balance, :unit => "£"), "/profile", :id => "credits" %>
+						<%= link_to "", "/profile", :id => "profile" %>
+						<%= link_to "", logout_path, :id => "logout" %>
 				</div>
 			
 			<% else %>
