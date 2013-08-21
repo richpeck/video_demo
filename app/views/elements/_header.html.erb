@@ -1,7 +1,12 @@
 <div class="header">
 	<div class="information <%= "user" if (user_signed_in?) %>">
-		<div class="content_wrapper">
+		<div class="content_wrapper" style="position: relative;">
 			<% if user_signed_in? %>
+			
+				<div class="title">
+					<div class="main">x.press</div>
+					<div class="sub">connect with your heroes & friends</div>
+				</div>
 		
 				<div class="profile_options">
 						<%= link_to number_to_currency(@credits_balance, :unit => "£") + " Credits", "/profile" %>
