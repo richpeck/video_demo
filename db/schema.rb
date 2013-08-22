@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130820080126) do
+ActiveRecord::Schema.define(version: 20130822095644) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -33,9 +33,21 @@ ActiveRecord::Schema.define(version: 20130820080126) do
     t.datetime "updated_at"
   end
 
+  create_table "portfolio", force: true do |t|
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
-    t.integer  "category_id"
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -53,6 +65,12 @@ ActiveRecord::Schema.define(version: 20130820080126) do
   create_table "roles_users", id: false, force: true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "schedules", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

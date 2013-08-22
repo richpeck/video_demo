@@ -1,6 +1,32 @@
-Page for <b><%= @user.email %></b>!
-<hr />
+<div class="member_profile">
+	<div class="member_avatar">
+		&nbsp;
+	</div>
 
-	<% @videos.each do |video| %>
-		<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
-	<% end %>
+	<div class="member_info">
+		<div class="title"><%= if (@profile.name.present?) then @profile.name else @user.email end %></div>
+		<div class="sub_info">1563 broadcasts</div>
+		<div class="description">
+			<%= @profile.description.html_safe %>
+		</div>
+		<div class="book"><%= link_to "book a slot!", root_path, :id => "book_slot", :class => "big_button" %></div>
+	</div>
+</div>
+
+<% @videos.each do |video| %>
+	<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
+<% end %>
+
+<% if @portfolio %>
+	<div class="portfolio">
+		<% @portfolio.each do |portfolio|%>
+			<%= portfolio.description %>
+		<% end %>
+		
+		<% if @portfolio.count > 1 %>
+			<div class="more">
+				<%= link_to "", root_path %>
+			</div>
+		<% end %>
+	</div>
+<% end %>

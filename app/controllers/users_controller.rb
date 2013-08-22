@@ -12,7 +12,9 @@ class UsersController < ApplicationController
 	
 	def show
 		@user = User.find(params[:id])
+		@profile = @user.profile
 		@videos = @user.videos
+		@portfolio = @user.portfolios
 	end
 
 end
