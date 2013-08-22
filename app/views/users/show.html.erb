@@ -9,7 +9,7 @@
 		<div class="description">
 			<%= @profile.description.html_safe %>
 		</div>
-		<div class="book"><%= link_to "book a slot!", root_path, :id => "book_slot", :class => "big_button" %></div>
+		<div class="book"><%= link_to "book a slot!", user_schedules_path(@user.id), :id => "book_slot", :class => "big_button" %></div>
 	</div>
 </div>
 
@@ -20,10 +20,10 @@
 <% if @portfolio %>
 	<div class="portfolio">
 		<% @portfolio.each do |portfolio|%>
-			<%= portfolio.description %>
+			<%= if(portfolio.cover_image.present?) then image_tag(portfolio.cover_image.url, :size => "175x175") else portfolio.description end %>
 		<% end %>
 		
-		<% if @portfolio.count > 1 %>
+		<% if @portfolio.count >= 5 %>
 			<div class="more">
 				<%= link_to "", root_path %>
 			</div>

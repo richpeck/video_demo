@@ -391,7 +391,13 @@
 
  .portfolio {
 	display: block;
+	text-align: center;
  }
+ 
+ .portfolio .item {
+	display: inline-block;
+ }
+ 
  .portfolio .more {
 	text-align: center;
  }
@@ -408,6 +414,21 @@
  .portfolio .more a:hover { opacity: 1; }
  
  
+ /** Bookings Stylings **/
+ .bookings {
+	display: block;
+ }
+ .bookings .title {
+	font-size: 18px;
+	font-weight: bold;
+	background: #ececec;
+	border-bottom: 2px solid #E0E0E0;
+	padding: 18px 15px 15px 15px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	text-transform: lowercase;
+ }
  
 
  /** Video Area **/
@@ -502,13 +523,14 @@
  .footer tr td.main_links a#privacy  { background: url("footer_icons/privacy.png") 5% center no-repeat; }
  
  .footer tr td .social_icons 			{ display: block; transition: opacity 0.25s ease; }
- .footer tr td .social_icons:hover a 	{ opacity: 0.6; }
+ .footer tr td .social_icons:hover a 	{ opacity: 0.5; }
  .footer tr td .social_icons a:hover 	{ opacity: 1; }
  
  .footer tr td .social_icons a {
 	display: inline-block;
 	height: 27px;
 	width: 27px;
+	padding: 0 1px;
 	transition: opacity 0.25s ease;
  }
  .footer tr td .social_icons a#facebook 	{ background: url("footer_icons/facebook.png") no-repeat; }

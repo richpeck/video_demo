@@ -29,6 +29,24 @@ Welcome <b><%= @user.email %></b>!
 	</div>
 	
 	<hr />
+	<div class="container">
+		<% if (@portfolio.present?) %>
+			<% @portfolio.each do |portfolio| %>
+				<%= image_tag(portfolio.cover_image.url) %>
+				<%= link_to "delete", portfolio_path(portfolio.id), :method => "delete" %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="container">
+		<%= form_for :new_portfolio, :html => {:multipart => true}, :method => :post, url: portfolio_index_path do |f| %>
+			Description <%= f.text_field :description %><br/><br/>
+			<%= f.file_field :cover_image %>
+
+			<%= f.submit %>
+		<% end %>
+	</div>
+	
+	<hr />
 	<% if !@profile.avatar_file_name.nil? %>
 		<%= image_tag( @profile.avatar.url ) %>	
 	<% end %>	

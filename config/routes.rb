@@ -1,11 +1,6 @@
 VideoDemo::Application.routes.draw do
   
   root :to => "members#index"
-  resources :videos
-  resources :profile, :path => '/profile', :path_names => { :edit => 'settings' }, :only => ['update'] do
-    #resources :photos
-  end
-
   get '/profile', to: 'users#index'
   
   devise_for :users
@@ -15,7 +10,16 @@ VideoDemo::Application.routes.draw do
 	get "/logout" => "devise/sessions#destroy", :method => "delete"
   end
 
-  resources :users, :only => ['index', 'show'], :path_names => { :index => 'profile' }
+  resources :videos
+  resources :profile, :path => '/profile', :path_names => { :edit => 'settings' }, :only => ['update'] do
+    #resources :photos
+  end
+  
+  resources :users, :only => ['index', 'show'], :path_names => { :index => 'profile' } do
+	resources :schedules, :only => ['index']
+  end
   resources :members, :only => ['index', 'show'] 
+  resources :portfolio, :only => ['create', 'update', 'destroy']
+  resources :schedules, :only => ['create', 'update', 'destroy']
 
 end

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
    has_and_belongs_to_many :categories, :class_name => 'Category'
    has_many :videos, :class_name => 'Video', :foreign_key => 'user_id'
    has_many :portfolios, :class_name => 'Portfolio', :foreign_key => 'user_id'
+   has_many :schedules, :class_name => 'Schedule', :foreign_key => 'user_id'
    
    before_create :role_detect
    before_create :profile_detect
