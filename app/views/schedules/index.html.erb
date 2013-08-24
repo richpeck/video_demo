@@ -1,6 +1,8 @@
 <div class="bookings">
-	<div class="title"><%= @user.email %>'s Bookings</div>
-	<div class="">
-	
+	<div class="title"><%= link_to name?(@user), user_path(@user.id) %>'s Schedule</div>
+	<div class="schedule">
+		<% @schedules.each do |slot| %>
+			<p><%= link_to slot.start.to_formatted_s(:short) + " - " + slot.end.to_formatted_s(:short), user_schedule_bookings_path(:schedule_id => slot.id), :method => 'post' %></p>
+		<% end %>
 	</div>
 </div>

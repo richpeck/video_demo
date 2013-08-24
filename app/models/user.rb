@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
    has_many :videos, :class_name => 'Video', :foreign_key => 'user_id'
    has_many :portfolios, :class_name => 'Portfolio', :foreign_key => 'user_id'
    has_many :schedules, :class_name => 'Schedule', :foreign_key => 'user_id'
+   has_many :bookings, :class_name => 'Booking'
    
    before_create :role_detect
    before_create :profile_detect

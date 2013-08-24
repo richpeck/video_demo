@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 		@profile = @user.profile
 		@videos = @user.videos
 		@portfolio = @user.portfolios
+		@schedule = @user.schedules
 		@new_video = @user.videos.new
 	end
 	

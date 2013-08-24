@@ -8,7 +8,10 @@
 		<% @members.each do |member| %>
 
 			<div class="member">
-				<%= link_to member.email, user_path(member.id) %>
+				<%= link_to user_path(member.id), :title => name?(member) do %>
+					<%= image_tag(member.profile.avatar.url, :width => "225") %>
+					<div class="name"><%= name?(member) %></div>
+				<% end %>
 			</div>
 			
 		<% end %>

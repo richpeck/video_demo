@@ -1,10 +1,12 @@
 <div class="member_profile">
 	<div class="member_avatar">
-		&nbsp;
+		<% if (@user.profile.avatar.present?) %>
+			<%= image_tag(@user.profile.avatar.url, :width => "400") %>
+		<% end %>
 	</div>
 
 	<div class="member_info">
-		<div class="title"><%= if (@profile.name.present?) then @profile.name else @user.email end %></div>
+		<div class="title"><%= name?(@user) %></div>
 		<div class="sub_info">1563 broadcasts</div>
 		<div class="description">
 			<%= @profile.description.html_safe %>

@@ -15,11 +15,14 @@ VideoDemo::Application.routes.draw do
     #resources :photos
   end
   
-  resources :users, :only => ['index', 'show'], :path_names => { :index => 'profile' } do
-	resources :schedules, :only => ['index']
+  resources :users, :only => ['index', 'show'], :path_names => { index: 'profile' } do
+	resources :schedules, :only => ['index'] do
+		resources :bookings, :only => ['create'], :path_names => { create: 'book' }
+	end
   end
   resources :members, :only => ['index', 'show'] 
   resources :portfolio, :only => ['create', 'update', 'destroy']
   resources :schedules, :only => ['create', 'update', 'destroy']
+  #resources :bookings, :only => ['update', 'destroy']
 
 end

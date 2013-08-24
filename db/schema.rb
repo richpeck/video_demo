@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822095644) do
+ActiveRecord::Schema.define(version: 20130823165010) do
+
+  create_table "bookings", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookings_schedules", id: false, force: true do |t|
+    t.integer "booking_id"
+    t.integer "schedule_id"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -69,6 +82,10 @@ ActiveRecord::Schema.define(version: 20130822095644) do
 
   create_table "schedules", force: true do |t|
     t.integer  "user_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.boolean  "available"
+    t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

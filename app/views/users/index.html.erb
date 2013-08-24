@@ -47,6 +47,23 @@ Welcome <b><%= @user.email %></b>!
 	</div>
 	
 	<hr />
+	<div class="container">
+		<ul>
+			<% @schedule.each do |slot| %>
+				<li><%= slot.start.to_formatted_s(:short) %> - <%= slot.end.to_formatted_s(:short) %></li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="container">
+		<%= form_for :new_schedule, :html => {:multipart => true}, :method => :post, url: schedules_path do |f| %>
+			Start <%= f.text_field :start %><br/><br/>
+			Emd <%= f.text_field :end %>
+			<%= f.submit "Add Schedule" %>
+		<% end %>
+	</div>
+	
+	
+	<hr />
 	<% if !@profile.avatar_file_name.nil? %>
 		<%= image_tag( @profile.avatar.url ) %>	
 	<% end %>	

@@ -315,22 +315,30 @@
  }
  .members > div a {
 	display: inline-block;
-	width: 25%;
-	height: 250px;
 	text-align: center;
 	opacity: 0.8;
 	color: #fff;
-	background: #000;
-	padding: 120px 0;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	transition: opacity 0.25s ease;
 	-webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
+	position: relative;
  }
  .members > div a:hover {
 	opacity: 1;
+ }
+ .members .name {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 35px;
+	bottom: 4px;
+	background: url('navigation_bg.png') repeat;
+	font-size: 11px;
+	text-align: center;
+	line-height: 35px;
  }
  
  /*-- Single Member Display (Member Page) **/
@@ -341,10 +349,13 @@
  .member_avatar {
  	display: table-cell;
 	vertical-align: middle;
-	background: #000;
 	width: 400px;
 	height: 500px;
+	opacity: 0.9;
+	transition: opacity 0.25s ease;
  }
+ .member_avatar:hover { opacity: 1; cursor: pointer; }
+ .member_avatar img { display: block; }
  
  .member_info {
 	display: table-cell;
@@ -357,7 +368,7 @@
 	color: #3f3f3f;
 	font-size: 34px;
 	letter-spacing: -1px;
-	text-transform: lowercase;
+	text-transform: capitalize;
 	line-height: 30px;
  }
  .member_info .sub_info {
@@ -404,6 +415,7 @@
  .portfolio .more a {
 	display: inline-block;
 	padding: 35px;
+	margin-top: 15px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -429,6 +441,7 @@
 	-webkit-box-sizing: border-box;
 	text-transform: lowercase;
  }
+ .bookings .title a { color: inherit; }
  
 
  /** Video Area **/
