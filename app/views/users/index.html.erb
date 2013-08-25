@@ -1,3 +1,59 @@
+<div class="profile">
+
+	<div class="options">
+		<div class="verified"><%= link_to image_tag('profile/verified.png'), root_path  %></div>
+		<div class="profile_link">
+			<%= link_to user_path(@user) do %>
+				http://<%= request.host %><strong><%= user_path(@user) %></strong>
+			<% end %>
+			<%= link_to image_tag('profile/username_edit.png'), root_path %>
+		</div>
+	</div>
+
+	<div class="items">
+		<div class="avatar">
+			<%= if (@user.profile.avatar.url) then image_tag(@user.profile.avatar.url, :width=> '100%' ) end %>
+			<div class="name"><%= link_to name?(@user), root_path %></div>
+		</div>
+		
+		<div class="description">
+			<div class="text">
+				<p>I love to create new ideas & help people feel good about themselves</p>
+				<p>My work has created some really amazing ideas & I hope to give you all the best way to make the most of it</p>
+				<p>I trained with the national academy of fine arts & have a wealth of experience with the best ideas you can get ...</p>
+				
+				<div class="edit">
+					<%= link_to image_tag('profile/edit.png'), root_path %>
+				</div>
+				
+			</div>	
+			<div class="info">
+				<div class="registered">registered <strong><%= time_ago_in_words( @user.created_at ) %> ago</strong></div>
+			</div>
+		</div>
+		
+		<div class="portfolio">
+			<table class="images">
+				<% @user.portfolios.each_slice(2) do |portfolio| %>	
+					<tr>
+						<% portfolio.each do |cell| %>
+							<td><%= link_to image_tag(cell.cover_image.url, :size => "110x110", :title => cell.description), portfolio_path(cell.id), :method => "delete" %></td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+			<div class="info">
+				<div class="text"><strong><%= @user.portfolios.count %></strong>  <%= "portfolio photo".pluralize(@user.portfolios.count) %></div>
+				<div class="add_photo"><%= link_to image_tag('profile/new_photo.png'), root_path %></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
 Welcome <b><%= @user.email %></b>!
 	<hr />
 	<p>You registered <b><%= time_ago_in_words( @user.created_at ) %></b> ago</p>

@@ -141,7 +141,7 @@
 	width: 100%; 
 	height: 20px;
 	bottom: 30px;
-	background: url('header_shadow.png') top repeat-x;
+	background:  url('header_shadow.png') top repeat-x;
 	z-index: 5;
  }
  .header img {
@@ -316,8 +316,8 @@
  .members > div a {
 	display: inline-block;
 	text-align: center;
-	opacity: 0.8;
 	color: #fff;
+	opacity: 0.8;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -326,19 +326,22 @@
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
 	position: relative;
  }
- .members > div a:hover {
-	opacity: 1;
- }
+ .members > div a:hover { opacity: 1; }
+ .members > div a img 	{ display: block; }
  .members .name {
 	display: block;
 	position: absolute;
 	width: 100%;
-	height: 35px;
-	bottom: 4px;
-	background: url('navigation_bg.png') repeat;
+	height: 60px;
+	bottom: 0;
+	background: url('profile/title_bg.png') repeat;
 	font-size: 11px;
 	text-align: center;
-	line-height: 35px;
+	line-height: 65px;
+	color: #fff;
+	font-size: 20px;
+	font-family: 'proxima_nova_bold';
+	text-transform: lowercase;
  }
  
  /*-- Single Member Display (Member Page) **/
@@ -461,6 +464,182 @@
   display: inline-block;
  }
 
+ 
+ /** Profile Area **/
+ .profile {  display: block; }
+ .profile > div {
+	margin: 0 0 0 2px;
+ }
+ 
+ .profile .options {
+	display: block;
+	padding: 0 0 4px 0;
+ }
+ .profile .options .verified 		{ display: inline-block; }
+ .profile .options .verified a  	{ display: block;  }
+ .profile .options .verified a img  { vertical-align: middle; }
+ 
+ .profile .options .profile_link 		{ display: inline-block; padding-left: 5px; }
+ .profile .options .profile_link a 		{ color: #000; }
+ .profile .options .profile_link a img 	{ padding: 0 5px; }
+
+ 
+ .profile .items { display: block; }
+ .profile .items:after {
+	display: block;
+	clear: both;
+	content: "";
+ }
+ .profile .items > div {
+	float: left;
+	height: 410px;
+ }
+ .items .avatar {
+	display: inline-block;
+	position: relative;
+	background: #000;
+	width: 260px;
+ }
+ .items .avatar img {
+	display: block;
+ }
+ .items .avatar .name {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	background: #000 url('profile/title_bg.png') repeat;
+	height: 70px;
+	line-height: 75px;
+	font-size: 18px;
+	font-family: 'proxima_nova_bold';
+	text-align: center;
+ }
+ .items .avatar .name a {
+	display: block;
+	color: #fff;
+ }
+ .items .avatar .name a:after {
+	content: url('profile/title_edit.png');
+	margin-left: 20px;
+ }
+ 
+ .items .description {
+	 display: inline-block;
+	 position: relative;
+	 border: 2px solid #c7c7c7;
+	 width: 40%;
+	 background: #ececec url('profile/description_bg.png') left 5% no-repeat;
+	 box-sizing: border-box;
+	 -moz-box-sizing: border-box;
+	 -webkit-box-sizing: border-box;
+	 margin: 0 10px;
+ }
+ .items .description .text {
+	display: block;
+	padding: 75px 40px 75px 40px;
+ }
+ .items .description .text p {
+ 	display: block;
+ 	font-family: 'proxima_nova_light';
+	font-size: 16px;
+ }
+ .items .description .edit {
+	display: block;
+	position: relative;
+	bottom: 0;
+	right: 0;
+ }	
+ 
+ .items .description .info {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	line-height: 75px;
+	background: #fff;
+	padding: 0 30px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+ }
+ .items .description .info .registered  { float: right; }
+ 
+ .items .portfolio {
+	display: inline-block;
+	border: 2px solid #c7c7c7;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 240px;
+	position: relative;
+ }
+ .items .portfolio table.images {
+ 	width: 98%;
+	padding: 0;
+	margin: 0;
+	border-spacing: 0;
+	border-collapse: 0;
+	margin: auto;
+	padding-top: 2px;
+ }
+ .items .portfolio table.images tr td {
+	width: 50%;
+	padding: 3px 0;
+ }	
+ .items .portfolio .images img {
+	display: block;
+	margin: auto;
+ }
+ .items .portfolio .images a { 
+	position: relative;
+	color: #fff;
+ }
+ .items .portfolio .images a:after {
+	padding: 45px 0;
+ 	content: url('profile/photo_delete.png');
+	background: url('profile/photo_delete_bg.png') repeat;
+	position: absolute;
+	top: -110px;
+	left: -55px;
+	width: 110px;
+	height: 110px;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+ }
+ .items .portfolio .images a:hover:after 	{ opacity: 1; }
+ .items .portfolio .images a:active:after 	{ opacity: 0.8; }
+
+ 
+ 
+ .items .portfolio .info {
+	display: block;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	background: #fff;
+	height: 70px;
+	font-size: 14px;
+	/* padding: 0 20px; */
+ }
+ .items .portfolio .info .text {
+	display: block;
+	line-height: 77px;
+ }
+ .items .portfolio .info .add_photo {
+	display: block;
+	position: absolute;
+	right: 20px;
+	bottom: 25px;
+ }
+ .items .portfolio .info .add_photo a {
+	padding: 10px;
+ }
+ 
  
  /** Footer **/
  .footer, .page_wrapper:after { height: 285px; }

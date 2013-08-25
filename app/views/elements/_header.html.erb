@@ -35,7 +35,7 @@
 	</div>
 	
 	<div class="nav_bar">
-		<div id="links" <%= if (@category_members || current_page?(root_path)) then "class=active" end %>>
+		<div id="links" <%= if (@members || current_page?(root_path)) then "class=active" end %>>
 			<%= link_to "home", root_path, class: active_class?(root_path) %>
 			<% @categories.each do |category| %>
 				<%= link_to category.title, member_path(category.id), class: active_class?(member_path(category.id)) %>
