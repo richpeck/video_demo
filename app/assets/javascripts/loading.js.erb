@@ -1,0 +1,10 @@
+//*-- Apply Loading Icon To Ajax Requests --*/
+
+(function( $ ){
+   $.fn.loading = function() {
+	 
+	 var loading_gif = "<div class=\"loading\"><img src='<%= asset_path('loading.gif') %>'></div>";
+	 $('#broadcast').html(loading_gif).fadeIn('150'); 
+	  
+   }; 
+})( jQuery );

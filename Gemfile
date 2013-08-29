@@ -57,3 +57,6 @@ gem "cancan", "~> 1.6.10"
 
 #Paperclip
 gem "paperclip", "~> 3.5.1"
+
+#JQuery File Upload
+gem "jquery-fileupload-rails", "~> 0.4.1"

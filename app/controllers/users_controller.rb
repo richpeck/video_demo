@@ -9,8 +9,11 @@ class UsersController < ApplicationController
 		@profile = @user.profile
 		@videos = @user.videos
 		@portfolio = @user.portfolios
-		@schedule = @user.schedules
+		@schedules = @user.schedules
 		@new_video = @user.videos.new
+		
+		@new_categories = Category.all - @user.categories
+		
 	end
 	
 	def show

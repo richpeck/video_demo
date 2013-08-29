@@ -1,0 +1,14 @@
+
+<!-- Create Broadcast Popover -->
+<div class="title">
+	<%= link_to image_tag('modal_close.png'), "#", :class => "modal_close" %>
+	create new broadcast
+</div>
+<div class="body">
+	<%= form_for(@new_video, :remote => true, :html => {:id => "broadcast"}) do |f| %>
+		Name: <%= f.text_field :name %><br/><br/>
+		Public? <%= f.check_box :public %><br/><br/>
+
+		<%= f.submit "Create Broadcast", :confirm => "Are you Sure?" %>
+	<% end %>
+</div>
