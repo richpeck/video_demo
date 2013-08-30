@@ -112,7 +112,7 @@
 	</div>
 	
 	<div class="modal" id="new_broadcast">
-		<%= render :partial => 'users/new_broadcast' %>
+		<%= render :partial => 'elements/modals/new_broadcast' %>
 	</div>
 	
 	<script type="text/javascript">
@@ -125,12 +125,22 @@
 	<script type="text/javascript">
 	
 		$('#public').ios_switch( $('#public') );
-		
-		$('#broadcast').on('ajax:beforeSend', function(){
-			$('#new_video').loading();
-		}).on('ajax:success', function(){
-			//Success Stuff
-		});
+		$('#public').on('change', function(e) {
+			e.preventDefault();
+			
+			$.ajax({
+				url: "http://fiddle.jshell.net/favicon.png",
+				beforeSend: function ( xhr ) {
+				xhr.overrideMimeType("text/plain; charset=x-user-defined");
+			}
+			}).done(function ( data ) {
+			if( console && console.log ) {
+				console.log("Sample of data:", data.slice(0, 100));
+			}
+			});
+			
+			
+		});	
 		
 	</script>
 	

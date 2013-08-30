@@ -23,4 +23,5 @@ VideoDemo::Application.routes.draw do
   resources :schedules, :only => ['create', 'update', 'destroy']
   #resources :bookings, :only => ['update', 'destroy']
 
+
 end

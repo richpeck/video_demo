@@ -24,6 +24,7 @@ class VideosController < ApplicationController
 		respond_to do |format|
 			if @new_video.save
 				format.html { redirect_to("/videos/"+@new_video.id.to_s) }
+				format.js   { render :partial => 'elements/modals/ajax_complete' }
 			else
 				format.html { render :controller => 'rooms', :action => "index" }
 			end

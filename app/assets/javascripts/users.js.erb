@@ -1,0 +1,9 @@
+//*-- Users Profile Javascript --*/
+//= require ios7_switches
+//= require loading
+
+$(document).on('ajax:beforeSend', '#broadcast', function(){
+	$('#new_video').loading();
+}).on('ajax:complete', '#broadcast', function(evt, data, status, xhr){
+	$('#new_broadcast .body').html(data.responseText);
+});

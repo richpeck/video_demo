@@ -122,7 +122,8 @@
  }
  .modal {
 	display: none;
-	background: #fff;
+	position: relative;
+	background: #f0f0f0;
 	border-radius: 5px;
 	-webkit-box-shadow: 0px 0px 5px #323232;
 	   -moz-box-shadow: 0px 0px 5px #323232;
@@ -136,13 +137,15 @@
  .modal .title {
 	display: block;
 	position: relative;
-	background: #f0f0f0;
+	background: #c63856;
+	color: #fff;
 	font-size: 16px;
 	padding-top: 17px !important;
 	text-align: left;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
  }
+ .modal .title:hover { cursor: pointer; }
  .modal .title a.modal_close	 {
 	 float: right;
 	 position: relative;
@@ -153,13 +156,54 @@
 	display: block;
 	padding: 10px;
  }
- .modal .body {
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+ .modal .body:after {
+	content: "";
+	display: block;
+	clear: both;
  }
  .loading {
 	display: block;
 	text-align: center;
+ }
+ .modal .buttons {	
+	display: block;
+	float: right;
+ }
+ .modal a.btn {
+	display: inline-block;
+	transition: top 0.2s ease;
+	height: 16px;
+	width: 16px;
+	padding-left: 7px;
+ }
+ .modal a.btn:hover { cursor: pointer; }
+ .modal a.btn:active {
+	top: 2px;
+ }
+ .modal a.btn.cancel 	{ background: url('modal_confirm_cancel.png') right center no-repeat; }
+ .modal a.btn.confirm 	{ background: url('modal_confirm_ok.png') right center no-repeat; }
+
+
+
+ .modal .confirmation {
+	display: none;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	padding: 20px;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+	left: 0;
+	background: #fff;
+	border-top: 2px solid #E0E0E0; 
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+ }
+ .modal .confirmation:after {
+	content: "";
+	display: block;
+	clear: both;
  }
 
  

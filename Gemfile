@@ -60,3 +60,6 @@ gem "paperclip", "~> 3.5.1"
 
 #JQuery File Upload
 gem "jquery-fileupload-rails", "~> 0.4.1"
+
+#JQuery UI
+gem "jquery-ui-rails", "~> 4.0.4"

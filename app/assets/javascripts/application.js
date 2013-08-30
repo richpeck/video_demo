@@ -15,3 +15,6 @@
 //= require turbolinks
 //= require jquery-fileupload/basic
 //= require lean_modal
+//= require confirm
+//= require jquery.ui.core
+//= require jquery.ui.draggable

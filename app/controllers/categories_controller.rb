@@ -2,9 +2,12 @@ class CategoriesController < ApplicationController
 
 	def update
 		@user = User.find(params[:user_id])
+		@id = @user.categories.where(:id => params[:id]).present?
 		
-		@user.categories << Category.find(params[:id])
-		@user.save
+		if (!@id)
+			@user.categories << Category.find(params[:id])
+			@user.save
+		end
 		
 		redirect_to users_path
 	end
