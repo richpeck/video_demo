@@ -40,7 +40,7 @@
 			
 			//if profile is public, load checkbox pre-loaded
 			if ( $.ios_switch.options.elem.is(":checked") ) {
-				$($'#ios_switch').addClass('on');			
+				$('#ios_switch').addClass('on');			
 			}
 			
 		},
