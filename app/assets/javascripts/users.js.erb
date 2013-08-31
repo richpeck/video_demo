@@ -18,8 +18,8 @@
 		$('#upload_public').on('change', function(e) {
 		
 			$.ajax({
-				type: 'patch',
-				url: 'profile/11',
+				type: 'PATCH',
+				url: $(this).parent().prop('action'),
 				data: $(this).serialize( { checkboxesAsBools: true }),
 				success: function(data){
 				  //success commands

@@ -5,6 +5,9 @@
 	
 	$.extend(true, $.ios_switch, {
 	
+		//set the options
+		options: {},
+	
 		// change checkbox into switch
 		init: function(elem) {
 			if (!elem.is(':checkbox')) throw new Error('You can\'t make Switch out of non-checkbox input'); // make sure it's a checkbox
@@ -16,6 +19,11 @@
 			newdiv.className = 'ios-switch'; 
 			newdiv.setAttribute("id", "ios_switch"); 
 			newdiv.setAttribute("title", "Public?"); // add standard DIV
+			
+			//if profile is public, load checkbox pre-loaded
+			if ( $.ios_switch.options.elem.is(":checked") ) {
+				$(newdiv).addClass('on');			
+			}
 			
 			$.ios_switch.prepare_dom(newdiv);
 		},
@@ -34,19 +42,14 @@
 			document.getElementById("ios_switch").appendChild(onBackground);
 			document.getElementById("ios_switch").appendChild(stateBackground);
 			document.getElementById("ios_switch").appendChild(handle);
-			
-			//if profile is public, load checkbox pre-loaded
-			//$.ios_switch.turnOn(newDiv);
 		},
 		
 		// handle click request
 		toggle: function(newDiv) { 
 			if( newDiv.hasClass('on') ){
 				$.ios_switch.turnOff(newDiv);
-				console.log('unchecked');
 			} else {
 				$.ios_switch.turnOn(newDiv);
-				console.log('checked');
 			}
 
 			$.ios_switch.triggerChange();
@@ -74,16 +77,18 @@
   });
 
    $.fn.ios_switch = function(elem) {
-		var elem = elem;
+		$.extend(true, $.ios_switch.options, {elem: elem})
+		var elem = $.ios_switch.options.elem
 		
 		$.ios_switch.init(elem);
-		var newDiv = $('#ios_switch');
+		$.extend(true, $.ios_switch.options, {newDiv: $('#ios_switch')} )
+		var newDiv = $.ios_switch.options.newDiv
 		
 		return newDiv.each(function() {
 			var $input = $(this)
 		  
 			$input
-			.click(function() {		  
+			.click(function() {	
 				$.ios_switch.toggle(newDiv);
 			})
 		})
