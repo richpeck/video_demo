@@ -593,7 +593,9 @@
 	float: right;
 	margin-right: 1px;
  }
- 
+ .profile .options .public input[type="checkbox"] {
+	display: none;
+ }
  
  .profile .items { display: block; }
  .profile .items:after {
