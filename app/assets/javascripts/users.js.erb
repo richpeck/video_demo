@@ -10,28 +10,7 @@
 		$('#new_broadcast .body').html(data.responseText);
 	});
 
-/*-- Public Checkbox --*/
-	$(document).ready(function() {
-	
-		$('#upload_public').ios_switch( $('#upload_public') );	
-		
-		$('#upload_public').on('change', function(e) {
-		
-			$.ajax({
-				type: 'PATCH',
-				url: $(this).parent().prop('action'),
-				data: $(this).serialize( { checkboxesAsBools: true }),
-				success: function(data){
-				  //success commands
-				},
-				error: function(data) {
-					//error commands
-				}
-			});
-			
-		});	
-		
-	});
+
 
 
 /*-- File Uploaders (Avatar & Portfolio) --*/

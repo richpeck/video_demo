@@ -38,6 +38,10 @@
 			document.getElementById("ios_switch").appendChild(stateBackground);
 			document.getElementById("ios_switch").appendChild(handle);
 			
+			//if profile is public, load checkbox pre-loaded
+			if ( $.ios_switch.options.elem.is(":checked") ) {
+				$('#ios_switch').addClass('on');			
+			}
 			
 		},
 		
