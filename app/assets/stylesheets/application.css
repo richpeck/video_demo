@@ -149,8 +149,9 @@
  .modal .title a.modal_close	 {
 	 float: right;
 	 position: relative;
-	 top: -5px;
-	 right: -7px;
+	 top: -14px;
+	 right: -15px;
+	 padding: 10px;
  }
  .modal .title a.modal_close img {
 	display: block;
@@ -163,6 +164,11 @@
  }
  .loading {
 	display: block;
+	text-align: center;
+ }
+ .modal .info {
+	display: block;
+	margin: auto;
 	text-align: center;
  }
  .modal .buttons {	

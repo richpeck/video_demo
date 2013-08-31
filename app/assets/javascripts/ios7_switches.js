@@ -33,54 +33,58 @@
 
 			document.getElementById("ios_switch").appendChild(onBackground);
 			document.getElementById("ios_switch").appendChild(stateBackground);
-			document.getElementById("ios_switch").appendChild(handle);	
+			document.getElementById("ios_switch").appendChild(handle);
+			
+			//if profile is public, load checkbox pre-loaded
+			//$.ios_switch.turnOn(newDiv);
 		},
 		
 		// handle click request
-		toggle: function() { 
-			if($('#ios_switch').hasClass('on')){
-				$.ios_switch.turnOff();
+		toggle: function(newDiv) { 
+			if( newDiv.hasClass('on') ){
+				$.ios_switch.turnOff(newDiv);
+				console.log('unchecked');
 			} else {
-				$.ios_switch.turnOn();
+				$.ios_switch.turnOn(newDiv);
+				console.log('checked');
 			}
 
 			$.ios_switch.triggerChange();
 		},
 		
 		// turn button on
-		turnOn: function() {
-			$('#ios_switch').addClass('on');
-			$('#ios_switch').removeClass('off');
-			$("#public").attr("checked",true);
+		turnOn: function(newDiv) {
+			$(newDiv).addClass('on');
+			$(newDiv).removeClass('off');
+			$("#upload_public").prop('checked', true);
 		},
 		
 		//turn button off 
-		turnOff: function() {
-			$('#ios_switch').removeClass('on');
-			$('#ios_switch').addClass('off');
-			$("#public").attr("checked",false);
+		turnOff: function(newDiv) {
+			$(newDiv).removeClass('on');
+			$(newDiv).addClass('off');
+			$("#upload_public").prop('checked', false);
 		},
 		
 		//trigger "change" event
-		triggerChange: function() {
-			$('#public').trigger('change');
+		triggerChange: function(elem) {
+			$('#upload_public').trigger('change');
 		}
 		
   });
-
-
 
    $.fn.ios_switch = function(elem) {
 		var elem = elem;
 		
 		$.ios_switch.init(elem);
+		var newDiv = $('#ios_switch');
 		
-		return $('#ios_switch').each(function() {
+		return newDiv.each(function() {
 			var $input = $(this)
 		  
 			$input
 			.click(function() {		  
-				$.ios_switch.toggle();
+				$.ios_switch.toggle(newDiv);
 			})
 		})
 

@@ -5,12 +5,16 @@ class ProfileController < ApplicationController
 	def update
 		@profile = User.joins(:profile).find(current_user.id)
 		@profile.profile.update(upload_params)
-		redirect_to users_path
+		
+		respond_to do |format|
+			format.html { render :nothing => true }
+			format.js 	{ render :partial => 'profiles/update.js' }
+		end
 	end
 	
 	private
 	def upload_params
-		params.require(:upload).permit(:avatar)
+		params.require(:upload).permit(:avatar, :public)
 	end
 
 end

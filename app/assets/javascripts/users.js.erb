@@ -2,8 +2,58 @@
 //= require ios7_switches
 //= require loading
 
-$(document).on('ajax:beforeSend', '#broadcast', function(){
-	$('#new_video').loading();
-}).on('ajax:complete', '#broadcast', function(evt, data, status, xhr){
-	$('#new_broadcast .body').html(data.responseText);
-});
+
+/*-- Create Broadcast Ajax --*/
+	$(document).on('ajax:beforeSend', '#broadcast', function(){
+		$('#broadcast').loading();
+	}).on('ajax:complete', '#broadcast', function(evt, data, status, xhr){
+		$('#new_broadcast .body').html(data.responseText);
+	});
+
+/*-- Public Checkbox --*/
+	$(document).ready(function() {
+	
+		$('#upload_public').ios_switch( $('#upload_public') );	
+		
+		$('#upload_public').on('change', function(e) {
+		
+			$.ajax({
+				type: 'patch',
+				url: 'profile/11',
+				data: $(this).serialize( { checkboxesAsBools: true }),
+				success: function(data){
+				  //success commands
+				},
+				error: function(data) {
+					//error commands
+				}
+			});
+			
+		});	
+		
+	});
+
+
+/*-- File Uploaders (Avatar & Portfolio) --*/
+	$(document).ready(function() {
+	
+		$('#fileupload').fileupload({
+			add: function (e, data) {
+				var jqXHR = data.submit()
+				.success(function (result, textStatus, jqXHR) { location.reload(); })
+				.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
+				.complete(function (result, textStatus, jqXHR) {/* ... */});
+			}
+			
+		});
+		$('#avatar').fileupload({
+			add: function (e, data) {
+				var jqXHR = data.submit()
+				.success(function (result, textStatus, jqXHR) { location.reload(); })
+				.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
+				.complete(function (result, textStatus, jqXHR) {/* ... */});
+			}
+			
+		});
+		
+	});

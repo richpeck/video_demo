@@ -3,8 +3,8 @@
 	<div class="options">
 	
 		<div class="public">
-			<%= form_for :new_portfolio, :html => {:multipart => true}, :method => :post, url: portfolio_index_path do |f| %>
-				<%= f.check_box :public, :id => "public" %>
+			<%= form_for :upload, :html => {:multipart => true}, url: profile_path(current_user.id), :method => :patch, :remote => true, :id => "public_form" do |f| %>
+				<%= f.check_box :public, :checked => @user.profile.public %>
 			<% end %>
 		</div>
 		
@@ -102,67 +102,11 @@
 			<%= link_to "#{video_room.name}", video_path(video_room.id), :method => "get" %>
 		<% end %>
 	</div>
-	<div class="container">
-		<%= form_for(@new_video) do |f| %>
-			Name: <%= f.text_field :name %><br/><br/>
-			Public? <%= f.check_box :public %><br/><br/>
-
-			<%= f.submit %>
-		<% end %>
-	</div>
 	
 	<div class="modal" id="new_broadcast">
+		<div class="title">
+			<%= link_to image_tag('modal_close_white.png'), "#", :class => "modal_close" %>
+			create new broadcast
+		</div>
 		<%= render :partial => 'elements/modals/new_broadcast' %>
 	</div>
-	
-	<script type="text/javascript">
-		$("a[rel*=leanModal]").leanModal( { top: 300, overlay : 0.8, closeButton: ".modal_close" } );
-		$('.modal_close').on('click', function(e) {
-			e.preventDefault();
-		});
-	</script>
-	
-	<script type="text/javascript">
-	
-		$('#public').ios_switch( $('#public') );
-		$('#public').on('change', function(e) {
-			e.preventDefault();
-			
-			$.ajax({
-				url: "http://fiddle.jshell.net/favicon.png",
-				beforeSend: function ( xhr ) {
-				xhr.overrideMimeType("text/plain; charset=x-user-defined");
-			}
-			}).done(function ( data ) {
-			if( console && console.log ) {
-				console.log("Sample of data:", data.slice(0, 100));
-			}
-			});
-			
-			
-		});	
-		
-	</script>
-	
-	<script>
-		$(document).ready(function () {
-			$('#fileupload').fileupload({
-				add: function (e, data) {
-					var jqXHR = data.submit()
-					.success(function (result, textStatus, jqXHR) { location.reload(); })
-					.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
-					.complete(function (result, textStatus, jqXHR) {/* ... */});
-				}
-				
-			});
-			$('#avatar').fileupload({
-				add: function (e, data) {
-					var jqXHR = data.submit()
-					.success(function (result, textStatus, jqXHR) { location.reload(); })
-					.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
-					.complete(function (result, textStatus, jqXHR) {/* ... */});
-				}
-				
-			});
-		});
-	</script>

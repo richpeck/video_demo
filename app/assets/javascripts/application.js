@@ -12,9 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require jquery-fileupload/basic
-//= require lean_modal
-//= require confirm
 //= require jquery.ui.core
 //= require jquery.ui.draggable
+//= require turbolinks
+//= require jquery-fileupload/basic
+//= require confirm
+//= require_tree ./jquery
+
+/*-- Modal Popups --*/
+$(document).ready( function() {
+	$("a[rel*=leanModal]").leanModal( { top: 300, overlay : 0.8, closeButton: ".modal_close" } );
+});

@@ -24,9 +24,10 @@ class VideosController < ApplicationController
 		respond_to do |format|
 			if @new_video.save
 				format.html { redirect_to("/videos/"+@new_video.id.to_s) }
-				format.js   { render :partial => 'elements/modals/ajax_complete' }
+				format.js   { render :partial => 'elements/modals/ajax_complete', :locals =>  { msg: "Broadcast Created!" } }
 			else
 				format.html { render :controller => 'rooms', :action => "index" }
+				format.js   { render :partial => 'elements/modals/ajax_complete', :locals =>  { msg: "Sorry, there was an error! Please try again!", form: "elements/modals/new_broadcast"} }
 			end
 		end
 	end

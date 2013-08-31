@@ -1,7 +1,3 @@
-<div class="title">
-	<%= link_to image_tag('modal_close_white.png'), "#", :class => "modal_close" %>
-	create new broadcast
-</div>
 <div class="body">
 	<%= form_for(@new_video, :remote => true, :html => {:id => "broadcast"}) do |f| %>
 		Name: <%= f.text_field :name, :required => true %><br/><br/>
