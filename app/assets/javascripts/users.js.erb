@@ -31,25 +31,21 @@
 
 
 /*-- File Uploaders (Avatar & Portfolio) --*/
-	$(document).ready(function() {
-	
-		$('#fileupload').fileupload({
-			add: function (e, data) {
-				var jqXHR = data.submit()
-				.success(function (result, textStatus, jqXHR) { location.reload(); })
-				.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
-				.complete(function (result, textStatus, jqXHR) {/* ... */});
-			}
-			
-		});
-		$('#avatar').fileupload({
-			add: function (e, data) {
-				var jqXHR = data.submit()
-				.success(function (result, textStatus, jqXHR) { location.reload(); })
-				.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
-				.complete(function (result, textStatus, jqXHR) {/* ... */});
-			}
-			
-		});
+	$('#fileupload').fileupload({
+		add: function (e, data) {
+			var jqXHR = data.submit()
+			.success(function (result, textStatus, jqXHR) { location.reload(); })
+			.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
+			.complete(function (result, textStatus, jqXHR) {/* ... */});
+		}
+		
+	});
+	$('#avatar').fileupload({
+		add: function (e, data) {
+			var jqXHR = data.submit()
+			.success(function (result, textStatus, jqXHR) { location.reload(); })
+			.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
+			.complete(function (result, textStatus, jqXHR) {/* ... */});
+		}
 		
 	});
