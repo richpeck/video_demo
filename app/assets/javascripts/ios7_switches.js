@@ -20,11 +20,6 @@
 			newdiv.setAttribute("id", "ios_switch"); 
 			newdiv.setAttribute("title", "Public?"); // add standard DIV
 			
-			//if profile is public, load checkbox pre-loaded
-			if ( $.ios_switch.options.elem.is(":checked") ) {
-				$(newdiv).addClass('on');			
-			}
-			
 			$.ios_switch.prepare_dom(newdiv);
 		},
 	
@@ -42,6 +37,12 @@
 			document.getElementById("ios_switch").appendChild(onBackground);
 			document.getElementById("ios_switch").appendChild(stateBackground);
 			document.getElementById("ios_switch").appendChild(handle);
+			
+			//if profile is public, load checkbox pre-loaded
+			if ( $.ios_switch.options.elem.is(":checked") ) {
+				$($'#ios_switch').addClass('on');			
+			}
+			
 		},
 		
 		// handle click request
@@ -81,8 +82,8 @@
 		var elem = $.ios_switch.options.elem
 		
 		$.ios_switch.init(elem);
-		$.extend(true, $.ios_switch.options, {newDiv: $('#ios_switch')} )
-		var newDiv = $.ios_switch.options.newDiv
+		$.extend(true, $.ios_switch.options, {newDiv: '#ios_switch'} )
+		var newDiv = $($.ios_switch.options.newDiv)
 		
 		return newDiv.each(function() {
 			var $input = $(this)
