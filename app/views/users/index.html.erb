@@ -34,15 +34,15 @@
 		
 		<div class="description">
 			<div class="text">
-				<p>I love to create new ideas & help people feel good about themselves</p>
-				<p>My work has created some really amazing ideas & I hope to give you all the best way to make the most of it</p>
-				<p>I trained with the national academy of fine arts & have a wealth of experience with the best ideas you can get ...</p>
-				
-				<div class="edit">
-					<%= link_to image_tag('profile/edit.png'), root_path %>
+				<div id="description">
+					<%= if (!@user.profile.description.nil?) then @user.profile.description.html_safe else "Please add a description!!!" end %>			
 				</div>
-				
+				<div class="edit" id="edit_description">
+					<%= image_tag('profile/edit.png')  %>
+				</div>
 			</div>	
+
+			
 			<div class="info">
 				<div class="registered">registered <strong><%= time_ago_in_words( @user.created_at ) %> ago</strong></div>
 			</div>
@@ -103,10 +103,16 @@
 		<% end %>
 	</div>
 	
-	<div class="modal" id="new_broadcast">
-		<div class="title">
-			<%= link_to image_tag('modal_close_white.png'), "#", :class => "modal_close" %>
-			create new broadcast
-		</div>
-		<%= render :partial => 'elements/modals/new_broadcast' %>
+<div class="modal" id="new_broadcast">
+	<div class="title">
+		<%= link_to image_tag('modal_close_white.png'), "#", :class => "modal_close" %>
+		create new broadcast
 	</div>
+	<%= render :partial => 'elements/modals/new_broadcast' %>
+</div>
+
+	
+<div class="full_loading">
+	<%= image_tag('http://f.cl.ly/items/3w2q2f1j0R1A2e1P3J32/nm_spinner.gif') %>
+	Processing
+</div>

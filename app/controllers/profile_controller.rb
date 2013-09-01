@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
 	
 	private
 	def upload_params
-		params.require(:upload).permit(:avatar, :public)
+		params.require(:upload).permit(:avatar, :public, :description)
 	end
 
 end

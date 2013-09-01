@@ -3,6 +3,28 @@
 //= require loading
 
 
+/*-- Inline Edit --*/
+	$.fn.editable.defaults.mode = 'inline';
+	$.fn.editable.defaults.ajaxOptions = {type: "PUT"};
+		
+	$('#description').editable({
+			autotext: true,
+			type: 'textarea',
+			unsavedclass: null,
+			emptytext: 'Please add a description!!',
+			emptyclass: null,
+			url: '/profile/11',
+			success: function(response, newValue) {
+				console.log('success')
+			}
+	});	
+	$('#edit_description').on('click', function(e) {
+		e.stopPropagation();
+        e.preventDefault();
+		$('#description').editable('toggle');
+	});
+
+	
 /*-- Create Broadcast Ajax --*/
 	$(document).on('ajax:beforeSend', '#broadcast', function(){
 		$('#broadcast').loading();
@@ -11,23 +33,31 @@
 	});
 
 /*-- Public Checkbox --*/
-	$('#upload_public').ios_switch( $('#upload_public') );	
-	
-	$('#upload_public').on('change', function(e) {
-	
-		$.ajax({
-			type: 'PATCH',
-			url: $(this).parent().prop('action'),
-			data: $(this).serialize( { checkboxesAsBools: true }),
-			success: function(data){
-			  //success commands
-			},
-			error: function(data) {
-				//error commands
-			}
-		});
+
+	if ($('#upload_public').length > 0) { 
+
+		$('#upload_public').ios_switch( $('#upload_public') );	
+		$('#upload_public').on('change', function(e) {
 		
-	});	
+			//Full Loading
+			$('.full_loading').fadeIn();
+		
+			$.ajax({
+				type: 'PATCH',
+				url: $(this).parent().prop('action'),
+				data: $(this).serialize( { checkboxesAsBools: true }),
+				success: function(data){
+				  $('.full_loading').fadeOut( function() { $(this).remove() } );
+				},
+				error: function(data) {
+					$('.full_loading').fadeOut( function() { $(this).remove() } );
+					console.log(data);
+				}
+			});
+			
+		});	
+		
+	};
 
 
 /*-- File Uploaders (Avatar & Portfolio) --*/
