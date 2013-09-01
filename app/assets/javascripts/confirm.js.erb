@@ -1,48 +1,45 @@
 
 /** Custom Confirm Pop-Over **/
-$(document).ready(function() {
-	$.rails.allowAction = function(element) {
-	var message = element.data('confirm'),
-		answer = false, callback;
-	if (!message) { return true; }
- 
-	if ($.rails.fire(element, 'confirm')) {
-		myCustomConfirmBox(element, message, function() {
-			callback = $.rails.fire(element,
-				'confirm:complete', [answer]);
-				if(callback) {
-					var oldAllowAction = $.rails.allowAction;
-					$.rails.allowAction = function() { return true; };
-					element.trigger('click');
-					$.rails.allowAction = oldAllowAction;
-				}
-			});
-		}
-		return false;
-	}
- 
-	function myCustomConfirmBox(link, message, callback) {
-		//create confirmation box
-		var info = '<div class="confirmation" id="confirm">'+
-						'<div class="buttons">' +
-							'<a id="cancel_btn" class="btn cancel">&nbsp;</a>' +
-							'<a id="confirm_btn" class="btn confirm">&nbsp;</a>' +
-						'</div>' +
-						'<div class="message">' +
-							message +
-						'</div>' +
-					'</div>';	
-		
-		$(link).parent().append(info);
-		$('#confirm').fadeIn();
-		
-		//handle interactions
-		$('#confirm_btn').on('click', function() { 
-			callback(link);
-			$('#confirm').fadeOut('fast', function() { $(this).remove(); });
-		});
-		$('#cancel_btn').on('click', function() { $('#confirm').fadeOut('fast', function() { $(this).remove(); }); });
-		
-	}
+$.rails.allowAction = function(element) {
+var message = element.data('confirm'),
+	answer = false, callback;
+if (!message) { return true; }
 
-});
+if ($.rails.fire(element, 'confirm')) {
+	myCustomConfirmBox(element, message, function() {
+		callback = $.rails.fire(element,
+			'confirm:complete', [answer]);
+			if(callback) {
+				var oldAllowAction = $.rails.allowAction;
+				$.rails.allowAction = function() { return true; };
+				element.trigger('click');
+				$.rails.allowAction = oldAllowAction;
+			}
+		});
+	}
+	return false;
+}
+
+function myCustomConfirmBox(link, message, callback) {
+	//create confirmation box
+	var info = '<div class="confirmation" id="confirm">'+
+					'<div class="buttons">' +
+						'<a id="cancel_btn" class="btn cancel">&nbsp;</a>' +
+						'<a id="confirm_btn" class="btn confirm">&nbsp;</a>' +
+					'</div>' +
+					'<div class="message">' +
+						message +
+					'</div>' +
+				'</div>';	
+	
+	$(link).parent().append(info);
+	$('#confirm').fadeIn();
+	
+	//handle interactions
+	$('#confirm_btn').on('click', function() { 
+		callback(link);
+		$('#confirm').fadeOut('fast', function() { $(this).remove(); });
+	});
+	$('#cancel_btn').on('click', function() { $('#confirm').fadeOut('fast', function() { $(this).remove(); }); });
+	
+}
