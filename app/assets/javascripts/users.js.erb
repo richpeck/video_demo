@@ -47,10 +47,10 @@
 				url: $(this).parent().prop('action'),
 				data: $(this).serialize( { checkboxesAsBools: true }),
 				success: function(data){
-				  $('.full_loading').fadeOut( function() { $(this).remove() } );
+				  $('.full_loading').fadeOut();
 				},
 				error: function(data) {
-					$('.full_loading').fadeOut( function() { $(this).remove() } );
+					$('.full_loading').fadeOut();
 					console.log(data);
 				}
 			});
