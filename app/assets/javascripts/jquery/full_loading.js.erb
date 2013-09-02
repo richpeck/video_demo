@@ -1,0 +1,52 @@
+/**- Full loading function for JQuery (need to make a single loading function) -**/
+
+(function( $ ){
+	$.full_loading = {}
+	
+	$.extend(true, $.full_loading, {
+
+		//Create DOM element (fade in if not present)
+		init: function() {
+			//Make sure we're only creating one
+			if ( $('.full_loading').length == 0) { 
+		
+				//Insert loading form  
+				var container = document.createElement('div');
+				document.getElementsByClassName('page_wrapper')[0].appendChild(container);
+				
+				container.className = 'full_loading'; 
+				container.innerHTML = "<img src=<%= asset_path('spinner.gif') %> alt=Processing>Processing";
+			}
+			
+			$.full_loading.fadeIn()
+		},
+		
+		//Fade the element in
+		fadeIn: function() {
+			if ($('.full_loading').css('display') != 'block') {
+				$('.full_loading').fadeIn();
+			}
+		},
+		
+		//Fade the element out
+		fadeOut: function() {
+			$('.full_loading').fadeOut();
+		}
+			
+	});
+
+	$.fn.full_loading = function() {
+		
+		if ($('.full_loading').css('display') != 'block') {
+			$.full_loading.init()
+		}else if($('.full_loading').css('display') != 'block'){
+			$.full_loading.fadeIn()
+		}else if (($('.full_loading').css('display') == 'block')) {
+			$.full_loading.fadeOut()
+		}
+
+		
+	}; 	
+
+		
+})( jQuery );

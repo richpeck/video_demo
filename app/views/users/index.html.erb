@@ -61,7 +61,7 @@
 			<div class="info">
 				<div class="text"><strong><%= @user.portfolios.count %></strong>  <%= "portfolio photo".pluralize(@user.portfolios.count) %></div>
 				<div class="add_photo">
-					<%= form_for :new_portfolio, :html => {:multipart => true, :id => "fileupload"}, :method => :post, url: portfolio_index_path do |f| %>
+					<%= form_for :new_portfolio, :html => {:multipart => true, :id => "portfolio"}, :method => :post, url: portfolio_index_path do |f| %>
 						<span class="btn btn-success fileinput-button">
 							<span><%= image_tag('profile/new_photo.png') %></span>
 							<%= f.file_field :cover_image %>
@@ -109,10 +109,4 @@
 		create new broadcast
 	</div>
 	<%= render :partial => 'elements/modals/new_broadcast' %>
-</div>
-
-	
-<div class="full_loading">
-	<%= image_tag('http://f.cl.ly/items/3w2q2f1j0R1A2e1P3J32/nm_spinner.gif') %>
-	Processing
 </div>

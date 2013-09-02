@@ -4,6 +4,7 @@
 
 
 /*-- Inline Edit --*/
+/*-- CHANGE URL!!!! --*/
 	$.fn.editable.defaults.mode = 'inline';
 	$.fn.editable.defaults.ajaxOptions = {type: "PUT"};
 		
@@ -40,17 +41,17 @@
 		$('#upload_public').on('change', function(e) {
 		
 			//Full Loading
-			$('.full_loading').fadeIn();
+			$(this).full_loading();
 		
 			$.ajax({
 				type: 'PATCH',
 				url: $(this).parent().prop('action'),
 				data: $(this).serialize( { checkboxesAsBools: true }),
 				success: function(data){
-				  $('.full_loading').fadeOut();
+				  $(this).full_loading();
 				},
 				error: function(data) {
-					$('.full_loading').fadeOut();
+					$(this).full_loading();
 					console.log(data);
 				}
 			});
@@ -60,16 +61,26 @@
 	};
 
 
-/*-- File Uploaders (Avatar & Portfolio) --*/
-	$('#fileupload').fileupload({
+/*-- File Uploaders --*/
+
+	/** - Portfolio - **/
+	$('#portfolio').fileupload({
+	
+		url: '/portfolio',
+		dataType: 'script',
+		type: 'post',
+		
 		add: function (e, data) {
-			var jqXHR = data.submit()
-			.success(function (result, textStatus, jqXHR) { location.reload(); })
-			.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
-			.complete(function (result, textStatus, jqXHR) {/* ... */});
+			data.submit();
+		},
+		success: function (data, status) {
+			$('.images  > tbody tr:last').append(jstext);
 		}
 		
 	});
+	
+	
+	/** - Avatar - **/
 	$('#avatar').fileupload({
 		add: function (e, data) {
 			var jqXHR = data.submit()

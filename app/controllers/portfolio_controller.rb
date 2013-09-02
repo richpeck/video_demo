@@ -5,13 +5,25 @@ class PortfolioController < ApplicationController
 	def create
 		@portfolio = Portfolio.new(upload_params)
 		@portfolio.save
-		redirect_to users_path
+		
+		respond_to do |format|
+			format.html { render :nothing => true }
+			format.js	{ render :partial => 'portfolio/create.js', :locals => { :image_url => @portfolio.cover_image_url, :id => @portfolio.id }, :methods => [:cover_image_url] }
+			format.json {
+				@url = portfolio_path(@portfolio.id)
+				render :json => {:url => @url , :portfolio => @portfolio.as_json(:only => [:id, :name, :description], :methods => [:cover_image_url])}
+			}
+		end
 	end
 	
 	def destroy
 		@portfolio = Portfolio.find(params[:id])
 		@portfolio.destroy
-		redirect_to users_path
+		
+		respond_to do |format|
+			format.html { redirect_to users_path }
+			format.json { render :json => @portfolio.as_json }
+		end
 	end
 	
 	private
