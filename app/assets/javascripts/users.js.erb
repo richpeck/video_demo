@@ -71,10 +71,12 @@
 		type: 'post',
 		
 		add: function (e, data) {
+			$('.images  > tbody tr:last').append('<td class="loading"></td>')
 			data.submit();
 		},
 		success: function (data, status) {
-			$('.images  > tbody tr:last').append(jstext);
+			$('.images  > tbody tr td:last').removeClass('loading');
+			$('.images  > tbody tr td:last').append(jstext);
 		}
 		
 	});
@@ -82,11 +84,23 @@
 	
 	/** - Avatar - **/
 	$('#avatar').fileupload({
+	
+		url: '/profile/11',
+		dataType: 'json',
+		type: 'post',
+		
 		add: function (e, data) {
-			var jqXHR = data.submit()
-			.success(function (result, textStatus, jqXHR) { location.reload(); })
-			.error(function (jqXHR, textStatus, errorThrown) {/* ... */})
-			.complete(function (result, textStatus, jqXHR) {/* ... */});
+			//$(".items .avatar .avatar").prepend('<div class="loading" id="avatar_loading"><img src="<%= asset_path("profile/avatar_loading.gif") %>"></div>');
+			//$('#avatar_loading').fadeIn('100');
+			$(this).avatar_loading('avatar_loading');
+			data.submit();
+		},
+		success: function (data, status) {;
+			$("#avatar_img").fadeOut('fast', function() {
+				$(this).attr("src", data.avatar_url).fadeIn('fast', function(){
+					$(this).avatar_loading('avatar_loading');
+				});
+			});
 		}
 		
 	});

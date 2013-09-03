@@ -15,8 +15,8 @@
 	</div>
 </div>
 
-<% @videos.each do |video| %>
-	<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
+<% @broadcasts.each do |broadcast| %>
+	<%= link_to "#{broadcast.name}", broadcast_path(:id => broadcast.id), :method => "get" %>
 <% end %>
 
 <% if @portfolio %>

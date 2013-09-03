@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
    has_one :profile, :class_name => 'Profile', :foreign_key => 'user_id'
    has_many :credits, :class_name => 'Credit', :foreign_key => 'user_id'
    has_and_belongs_to_many :categories, :class_name => 'Category'
-   has_many :videos, :class_name => 'Video', :foreign_key => 'user_id'
+   has_many :broadcasts, :class_name => 'Broadcast', :foreign_key => 'user_id'
    has_many :portfolios, :class_name => 'Portfolio', :foreign_key => 'user_id'
    has_many :schedules, :class_name => 'Schedule', :foreign_key => 'user_id'
    has_many :bookings, :class_name => 'Booking'

@@ -19,14 +19,12 @@
 	</div>
 
 	<div class="items">
-		<div class="avatar">
-			<!-- <%= if (@user.profile.avatar.url) then link_to image_tag(@user.profile.avatar.url, :width=> '100%'), root_path, :class => "avatar" end %> -->
-			
+		<div class="avatar">		
 			<!-- New Avatar Upload Form -->
 			<%= form_for :upload, :html => {:multipart => true, :id => "avatar"}, :method => :put, url: profile_path(current_user.id) do |f| %>
-				<div class="btn btn-success fileinput-button avatar">
+				<div class="btn btn-success fileinput-button avatar" id="avatar_container">
 					<%= f.file_field :avatar, :title => "Upload New" %>
-					<%= image_tag(@user.profile.avatar.url, :width=> '100%') %>
+					<%= image_tag(@user.profile.avatar.url, :width=> '100%', :id => "avatar_img", :alt => name?(@user)) %>
 				</div>
 			<% end %>
 			<div class="name"><%= link_to name?(@user), root_path %></div>
@@ -94,14 +92,14 @@
 	<div class="create"><%= link_to "new broadcast", "#new_broadcast", :id => "create_broadcast", :class => "big_button", :rel => "leanModal" %></div>
 </div>
 
+<div class="user_table">
+	<% @broadcasts.each do |broadcast| %>
+		<%= link_to broadcast.name, broadcast_path(broadcast.id), :method => "get", :class => "broadcast " + cycle('even', 'odd') %>
+	<% end %>
+</div>
 
-	<p style="margin-top: 60px;">You have <b><%= number_to_currency(@credits, :unit => "£")  %> Credits</b> in your account</p>
-	<hr />
-	<div class="container">
-		<% @videos.each do |video_room| %>
-			<%= link_to "#{video_room.name}", video_path(video_room.id), :method => "get" %>
-		<% end %>
-	</div>
+
+
 	
 <div class="modal" id="new_broadcast">
 	<div class="title">

@@ -1,5 +1,5 @@
 <div class="body">
-	<%= form_for(@new_video, :remote => true, :html => {:id => "broadcast"}) do |f| %>
+	<%= form_for(@new_broadcast, :remote => true, :html => {:id => "broadcast"}) do |f| %>
 		Name: <%= f.text_field :name, :required => true %><br/><br/>
 		Public? <%= f.check_box :public %><br/><br/>
 

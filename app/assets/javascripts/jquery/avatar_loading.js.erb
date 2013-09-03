@@ -1,0 +1,58 @@
+/**- Loading Functionality (append to div) -**/
+
+(function( $ ){
+	$.avatar_loading = {}
+	
+	$.extend(true, $.avatar_loading, {
+	
+		//Define settings
+		settings: {},
+	
+		//Create DOM element (fade in if not present)
+		init: function(loadingDiv) {
+			//Make sure we're only creating one
+			if ( $(loadingDiv).length == 0) { 
+		
+				//Insert loading form  
+				var container = document.createElement('div');
+				container.setAttribute("id", "avatar_loading"); 
+				$('#avatar_container').prepend(container);
+				
+				container.className = 'loading'; 
+				container.innerHTML = "<img src=<%= asset_path('profile/avatar_loading.gif') %> alt=Loading>";
+			}
+			
+			$.avatar_loading.fadeIn(loadingDiv)
+		},
+		
+		//Fade the element in
+		fadeIn: function(loadingDiv) {
+			if ($(loadingDiv).css('display') != 'block') {
+				$(loadingDiv).fadeIn();
+			}
+		},
+		
+		//Fade the element out
+		fadeOut: function(loadingDiv) {
+			$(loadingDiv).fadeOut();
+		}
+			
+	});
+
+	$.fn.avatar_loading = function(loading_div) {
+		var loadingDiv = '#' + loading_div;
+		var settings = $.extend(true, $.avatar_loading.settings, {loadingDiv: loadingDiv} )
+		
+		if ($(loadingDiv).css('display') != 'block') {
+			$.avatar_loading.init(loadingDiv)
+		}else if($(loadingDiv).css('display') != 'block'){
+			$.avatar_loading.fadeIn(loadingDiv)
+		}else if (($(loadingDiv).css('display') == 'block')) {
+			$.avatar_loading.fadeOut(loadingDiv)
+		}
+
+		
+	}; 	
+
+		
+})( jQuery );

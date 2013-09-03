@@ -1,7 +1,7 @@
 
 
 <div class="create">
-	<%= form_for(@new_video) do |f| %>
+	<%= form_for(@new_broadcast) do |f| %>
 	Name: <%= f.text_field :name %><br/><br/>
 	Public? <%= f.check_box :public %><br/><br/>
 
@@ -10,10 +10,10 @@
 </div>
 
 <div>
-	<% @videos.each do |video| %>
+	<% @broadcasts.each do |video| %>
 
 		<p>
-			<%= link_to "#{video.name}", video_path(:id => video.id), :method => "get" %>
+			<%= link_to "#{broadcast.name}", broadcast_path(:id => broadcast.id), :method => "get" %>
 		</p>
 		
 	<% end %>

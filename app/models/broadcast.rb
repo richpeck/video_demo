@@ -1,4 +1,4 @@
-class Video < ActiveRecord::Base
+class Broadcast < ActiveRecord::Base
 
 	belongs_to :user, :class_name => 'User'
 	

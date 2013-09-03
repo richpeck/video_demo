@@ -17,7 +17,7 @@ VideoDemo::Application.routes.draw do
 	end
 	resources :categories, :only => ['update', 'destroy']
   end
-  resources :videos
+  resources :broadcasts, :only => ['create', 'show', 'destroy']
   resources :members, :only => ['index', 'show']
   resources :portfolio, :only => ['create', 'update', 'destroy']
   resources :schedules, :only => ['create', 'update', 'destroy']

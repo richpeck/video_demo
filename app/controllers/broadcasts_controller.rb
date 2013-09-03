@@ -1,32 +1,26 @@
-class VideosController < ApplicationController
+class BroadcastsController < ApplicationController
 
 	before_filter :config_opentok,:except => [:index]
 	before_filter :authenticate_user!
-	
-
-	def index
-		@videos = Video.all
-		@new_video = Video.new
-	end
-	
+		
 	def show 
-		@video = Video.find(params[:id])
-		@tok_token = @opentok.generate_token :session_id => @video.sessionId  
+		@broadcast = Broadcast.find(params[:id])
+		@tok_token = @opentok.generate_token :session_id => @broadcast.sessionId  
 
 	end
 	
 	def create
 		session = @opentok.create_session request.remote_addr
-		params[:video][:sessionId] = session.session_id
+		params[:broadcast][:sessionId] = session.session_id
 
-		@new_video = Video.new(permit_params)
+		@new_broadcast = Broadcast.new(permit_params)
 
 		respond_to do |format|
-			if @new_video.save
-				format.html { redirect_to("/videos/"+@new_video.id.to_s) }
+			if @new_broadcast.save
+				format.html { redirect_to("/broadcasts/"+@new_broadcast.id.to_s) }
 				format.js   { render :partial => 'elements/modals/ajax_complete', :locals =>  { msg: "Broadcast Created!" } }
 			else
-				format.html { render :controller => 'rooms', :action => "index" }
+				format.html { render :controller => 'users', :action => "index" }
 				format.js   { render :partial => 'elements/modals/ajax_complete', :locals =>  { msg: "Sorry, there was an error! Please try again!", form: "elements/modals/new_broadcast"} }
 			end
 		end
@@ -34,7 +28,7 @@ class VideosController < ApplicationController
 
 	private
 	def permit_params
-		params.require(:video).permit(:name, :description, :public, :sessionId).merge(:user_id => current_user.id)
+		params.require(:broadcast).permit(:name, :description, :public, :sessionId).merge(:user_id => current_user.id)
 	end
 	
 	

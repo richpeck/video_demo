@@ -1,11 +1,11 @@
-<h1><%= @video.name %></h1>
+<h1><%= @broadcast.name %></h1>
 <div id="videobox">
 
 </div>
 <script src="http://static.opentok.com/v0.91/js/TB.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var apiKey =  38223312;
-	var sessionId = "<%= @video.sessionId %>";
+	var sessionId = "<%= @broadcast.sessionId %>";
 	var token = "<%= @tok_token %>";
 
 	var session;

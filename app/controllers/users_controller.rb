@@ -7,11 +7,11 @@ class UsersController < ApplicationController
 		@credits = @user.credits.sum('value')
 		@role = @user.role
 		@profile = @user.profile
-		@videos = @user.videos
+		@broadcasts = @user.broadcasts.reject {|a| a.id == "" }
 		@portfolio = @user.portfolios
 		@schedules = @user.schedules
-		@new_video = @user.videos.new
 		
+		@new_broadcast = @user.broadcasts.new
 		@new_categories = Category.all - @user.categories
 		
 	end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@profile = @user.profile
-		@videos = @user.videos
+		@broadcasts = @user.broadcasts
 		@portfolio = @user.portfolios
 	end
 
