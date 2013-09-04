@@ -997,6 +997,14 @@
 	clear: both;
  }
  
+.credits {
+	font-family: 'proxima_nova_thin';
+	font-size: 38px;
+	letter-spacing: -2px;
+	color: #575757;
+	float: left;
+	margin: 30px 0 0 10px;
+} 
  .broadcasts .create #create_broadcast {
 	display: inline-block;
 	float: right;
@@ -1036,7 +1044,7 @@
  .user_table a.broadcast:hover 	{
 	color: #000;
  }
- .user_table .odd { background: #ececec; }
+ .user_table .even { background: #ececec; }
  
 
  

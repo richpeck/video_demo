@@ -307,9 +307,9 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 
                 //standard params
                 params = {
-                    name: this.options.name || '',
-                    value: submitValue,
-                    pk: pk 
+                    upload: {
+						description: submitValue,
+                   } 
                 };
 
                 //additional params

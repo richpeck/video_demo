@@ -63,3 +63,6 @@ gem "jquery-fileupload-rails", "~> 0.4.1"
 
 #JQuery UI
 gem "jquery-ui-rails", "~> 4.0.4"
+
+#Amazon S3
+gem "aws-sdk", "~> 1.16.1"

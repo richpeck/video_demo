@@ -84,6 +84,9 @@
 	</div>
 </div>
 
+<div class="credits">
+	<%= number_to_currency(@credits, unit: "&pound;") %>
+</div>
 <div class="broadcasts">
 	<div class="create"><%= link_to "new broadcast", "#new_broadcast", :id => "create_broadcast", :class => "big_button", :rel => "leanModal" %></div>
 </div>

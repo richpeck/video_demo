@@ -15,8 +15,14 @@
 			emptytext: 'Please add a description!!',
 			emptyclass: null,
 			url: '/profile/11',
+			pk: '11',
+			name: 'description',
+			data: {upload: {description: 'test'}},
 			success: function(response, newValue) {
 				console.log('success')
+			},
+			error: function(response) {
+				console.log(response);
 			}
 	});	
 	$('#edit_description').on('click', function(e) {
@@ -24,6 +30,8 @@
         e.preventDefault();
 		$('#description').editable('toggle');
 	});
+	
+
 
 	
 /*-- Create Broadcast Ajax --*/
@@ -79,7 +87,9 @@
 				$('#portfolio_count').hide().html(result.items).fadeIn();
 			},
 			error: function(result) {
-				//remove loading
+				$('#' + id).parent().fadeOut('100', function(){
+					$(this).remove();
+				});
 				console.log(result);
 			}
 		});
