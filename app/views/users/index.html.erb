@@ -21,7 +21,7 @@
 	<div class="items">
 		<div class="avatar">		
 			<!-- New Avatar Upload Form -->
-			<%= form_for :upload, :html => {:multipart => true, :id => "avatar"}, :method => :put, url: profile_path(current_user.id) do |f| %>
+			<%= form_for :upload, :html => {:multipart => true, :id => "avatar"}, :method => :put, url: profile_path(current_user.id), "data_id" => current_user.id do |f| %>
 				<div class="btn btn-success fileinput-button avatar" id="avatar_container">
 					<%= f.file_field :avatar, :title => "Upload New" %>
 					<%= image_tag(@user.profile.avatar.url, :width=> '100%', :id => "avatar_img", :alt => name?(@user)) %>
@@ -47,17 +47,13 @@
 		</div>
 		
 		<div class="portfolio">
-			<table class="images">
-				<% @user.portfolios.each_slice(2) do |portfolio| %>	
-					<tr>
-						<% portfolio.each do |cell| %>
-							<td><%= link_to image_tag(cell.cover_image.url, :size => "110x110", :title => cell.description), portfolio_path(cell.id), :method => :delete, :confirm => 'Really Delete?' %></td>
-						<% end %>
-					</tr>
+			<div class="images" id="images">
+				<% @user.portfolios.each_with_index do |portfolio, index| %>
+					<div class="image"><%= link_to image_tag(portfolio.cover_image.url, :size => "110x110", :title => portfolio.description), portfolio_path(portfolio.id), :method => :delete, :id => portfolio.id %></div>
 				<% end %>
-			</table>
+			</div>
 			<div class="info">
-				<div class="text"><strong><%= @user.portfolios.count %></strong>  <%= "portfolio photo".pluralize(@user.portfolios.count) %></div>
+				<div class="text"><strong id="portfolio_count"><%= @user.portfolios.count %></strong>  <%= "portfolio photo".pluralize(@user.portfolios.count) %></div>
 				<div class="add_photo">
 					<%= form_for :new_portfolio, :html => {:multipart => true, :id => "portfolio"}, :method => :post, url: portfolio_index_path do |f| %>
 						<span class="btn btn-success fileinput-button">

@@ -8,10 +8,14 @@ class PortfolioController < ApplicationController
 		
 		respond_to do |format|
 			format.html { render :nothing => true }
-			format.js	{ render :partial => 'portfolio/create.js', :locals => { :image_url => @portfolio.cover_image_url, :id => @portfolio.id }, :methods => [:cover_image_url] }
+			format.js	{
+				@user = User.find(current_user.id)
+				@portfolio_count = @user.portfolios.count()
+				render :partial => 'portfolio/create.js', :locals => { :image_url => @portfolio.cover_image_url, :id => @portfolio.id, :items => @portfolio_count }, :methods => [:cover_image_url]
+			}
 			format.json {
 				@url = portfolio_path(@portfolio.id)
-				render :json => {:url => @url , :portfolio => @portfolio.as_json(:only => [:id, :name, :description], :methods => [:cover_image_url])}
+				render :json => {:url => @url, :items => @portfolios_count, :portfolio => @portfolio.as_json(:only => [:id, :name, :description], :methods => [:cover_image_url])}
 			}
 		end
 	end
@@ -22,7 +26,10 @@ class PortfolioController < ApplicationController
 		
 		respond_to do |format|
 			format.html { redirect_to users_path }
-			format.json { render :json => @portfolio.as_json }
+			format.json {
+				@items = Portfolio.where("user_id = ?", current_user.id).count()
+				render :json => {:items =>  @items}
+			}
 		end
 	end
 	

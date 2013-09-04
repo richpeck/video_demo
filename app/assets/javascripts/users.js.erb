@@ -60,7 +60,34 @@
 		
 	};
 
+/*-- Delete Portfolio Picture --*/
 
+	$('#images').on('click', 'a', function(e) {
+		var id = $(this).attr('id');
+
+		$('#' + id).parent().prepend('<div class="loading overlay">&nbsp;</div>').hide().fadeIn('100');
+		
+		$.ajax({
+			type: 'DELETE',
+			url: 'portfolio/' + id,
+			dataType: 'json',
+			success: function(result) {
+				//remove loading
+				$('#' + id).parent().fadeOut('100', function(){
+					$(this).remove();
+				});
+				$('#portfolio_count').hide().html(result.items).fadeIn();
+			},
+			error: function(result) {
+				//remove loading
+				console.log(result);
+			}
+		});
+		
+		return false;
+	});
+
+	
 /*-- File Uploaders --*/
 
 	/** - Portfolio - **/
@@ -71,12 +98,12 @@
 		type: 'post',
 		
 		add: function (e, data) {
-			$('.images  > tbody tr:last').append('<td class="loading"></td>')
 			data.submit();
+			$('.images').append('<div class="image"><div class="loading">&nbsp;</div></div>').fadeIn('fast');
 		},
 		success: function (data, status) {
-			$('.images  > tbody tr td:last').removeClass('loading');
-			$('.images  > tbody tr td:last').append(jstext);
+			$('#portfolio_count').hide().html(items).fadeIn();
+			$('.images .image:last').html(jstext);
 		}
 		
 	});
@@ -85,7 +112,7 @@
 	/** - Avatar - **/
 	$('#avatar').fileupload({
 	
-		url: '/profile/11',
+		url: '/profile/' + $(this).attr('data_id'),
 		dataType: 'json',
 		type: 'post',
 		

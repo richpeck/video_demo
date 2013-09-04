@@ -787,6 +787,7 @@
 	overflow: hidden;
 	background: #fff;
  }
+ /*
  .items .portfolio table.images {
  	width: 98%;
 	padding: 0;
@@ -801,17 +802,48 @@
 	padding: 3px 0;
 	-webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
- }	
- .items .portfolio .images img {
+ }	*/
+ .items .portfolio .images {
+	display: block;
+	padding: 2px 0 0 2px ;
+ }
+ .items .portfolio .images:after {
+	content: "";
+	display: block;
+	clear: both;
+ }
+ .items .portfolio .image {
+	display: inline-block;
+	float: left;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+	-webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+	margin: 0;
+	padding: 4px 0 0 4px;
+	position: relative;
+ }
+ .items .portfolio .image img {
 	display: block;
 	margin: auto;
 	border: 0;
  }
- .items .portfolio .images a { 
+  .items .portfolio .image img.loading {
+	width: 110px;
+	height: 100px;
+	padding-top: 25px;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+  }
+ .items .portfolio .image a {
 	position: relative;
 	color: #fff;
+	z-index: 1;
  }
- .items .portfolio .images a:after {
+ .items .portfolio .image a:after {
 	padding: 45px 0;
  	content: url('profile/photo_delete.png');
 	background: url('profile/photo_delete_bg.png') repeat;
@@ -822,26 +854,33 @@
 	height: 110px;
 	opacity: 0;
 	transition: opacity 0.2s ease;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
- }
- .items .portfolio .images a:hover:after 	{ opacity: 1; }
- .items .portfolio .images a:active:after 	{ opacity: 0.8; }
- 
- .items .portfolio .images .loading 		{
-
- }
- .items .portfolio .images .loading:after 	{
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	content: 'hello';
-	text-align: center;
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 			box-sizing: border-box;
+	text-align: center;
+	z-index: 2
+ }
+ .items .portfolio .image a:hover:after 	{ opacity: 1; }
+ .items .portfolio .image a:active:after 	{ opacity: 0.8; }
+
+ 
+ .items .portfolio .image .loading {
+	width: 110px;
+	height: 110px;
+	text-align: center;
+	background: #fff url('profile/portfolio_loading.gif') center center no-repeat;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+	opacity: 0.8;
+ }
+ .items .portfolio .image .overlay  {
+	display: block;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	z-index: 1500;
  }
 
  
