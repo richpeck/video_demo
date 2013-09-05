@@ -5,7 +5,8 @@ class Profile < ActiveRecord::Base
 	has_attached_file :avatar,
 		:default_url => "/images/missing.png",
 		:storage => :s3,
-		:bucket => 'video-conference-demo'
+		:bucket => 'video-conference-demo',
+		:url => :s3_eu_url
 
 	def avatar_url
         avatar.url(:original)
