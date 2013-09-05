@@ -4,7 +4,9 @@ class Portfolio < ActiveRecord::Base
 	belongs_to :user, :class_name => 'User'
 	
 	has_attached_file :cover_image,
-		:default_url => "/images/missing.png"
+		:default_url => "/images/missing.png",
+		:storage => :s3,
+		:bucket => 'video-conference-demo'
 
 	
 	def cover_image_url
