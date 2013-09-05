@@ -78,15 +78,13 @@ VideoDemo::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   
-  # Paperclip Fix
-  config.paperclip_defaults = {
-			    :storage =&gt; :s3,
-			    :s3_credentials =&gt; {
-			      :bucket =&gt; ENV['video-conference-demo'],
-			      :access_key_id =&gt; ENV['AKIAISZOHLGVLQHH3XYA'],
-			      :secret_access_key =&gt; ENV['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']
-			    },
-			    :path =&gt; ":class/:id/:basename_:style.:extension",
-			    :url =&gt; ":s3_eu_url"
-  }
+  # Papaerclip (for Amazon)
+  	config.paperclip_defaults = {
+  	  :storage => :s3,
+	  :bucket => ENV['video-conference-demo'],
+  	  :s3_credentials => {
+  		:access_key_id => ENV['AKIAISZOHLGVLQHH3XYA'],
+  		:secret_access_key => ENV['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']
+  	  }
+  	}
 end
