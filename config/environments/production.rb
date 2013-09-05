@@ -79,12 +79,12 @@ VideoDemo::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
   
   # Papaerclip (for Amazon)
-  config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['video-conference-demo'],
-    :access_key_id => ENV['AKIAISZOHLGVLQHH3XYA'],
-    :secret_access_key => ENV['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']
-  }
-}
+  #	config.paperclip_defaults = {
+  #	  :storage => :s3,
+  #	  :s3_credentials => {
+  #		:bucket => ENV['video-conference-demo'],
+  #		:access_key_id => ENV['AKIAISZOHLGVLQHH3XYA'],
+  #		:secret_access_key => ENV['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']
+  #	  }
+  #	}
 end
