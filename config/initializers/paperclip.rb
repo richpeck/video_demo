@@ -1,1 +1,3 @@
-#Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
+Paperclip.interpolates(:s3_eu_url) do |att, style| 
+"#{att.s3_protocol}://s3-eu-west-1.amazonaws.com/#{att.bucket_name}/#{att.path(style)}"
+end
