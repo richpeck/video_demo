@@ -441,7 +441,11 @@
 	display: block;
 	text-align: center;
  }
- .members > div a {
+ .members .member {
+	display: inline-block;
+	vertical-align: top;
+ }
+ .members .member a {
 	display: inline-block;
 	text-align: center;
 	color: #fff;
@@ -452,16 +456,19 @@
 	transition: opacity 0.25s ease;
 	-webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
+	height: 335px;
+	width: 225px;
+	background: #000;
 	position: relative;
  }
- .members > div a:hover { opacity: 1; }
- .members > div a img 	{ display: block; }
+ .members .member a:hover { opacity: 1; }
+ .members .member a img 	{ display: block; }
  .members .name {
 	display: block;
 	position: absolute;
 	width: 100%;
 	height: 60px;
-	bottom: 0;
+	bottom: -1px;
 	background: url('profile/title_bg.png') repeat;
 	font-size: 11px;
 	text-align: center;
