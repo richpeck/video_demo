@@ -6,7 +6,6 @@ class Profile < ActiveRecord::Base
 		:default_url => "/images/missing.png",
 		:storage => :s3,
 		:bucket => 'video-conference-demo',
-		:url => ":s3_eu_url"
 
 	def avatar_url
         avatar.url(:original)
