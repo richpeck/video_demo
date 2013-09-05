@@ -82,6 +82,7 @@ VideoDemo::Application.configure do
   	config.paperclip_defaults = {
   	  :storage => :s3,
 	  :bucket => ENV['video-conference-demo'],
+	  :s3_host_name => 's3-eu-west-1.amazonaws.com',
   	  :s3_credentials => {
   		:access_key_id => ENV['AKIAISZOHLGVLQHH3XYA'],
   		:secret_access_key => ENV['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']
