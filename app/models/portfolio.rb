@@ -6,7 +6,8 @@ class Portfolio < ActiveRecord::Base
 	has_attached_file :cover_image,
 		:default_url => "/images/missing.png",
 		:storage => :s3,
-		:bucket => 'video-conference-demo'
+		:bucket => 'video-conference-demo',
+		:url  => ":s3_eu_url"
 
 	
 	def cover_image_url
