@@ -444,7 +444,6 @@
  .members .member {
 	display: inline-block;
 	vertical-align: top;
-	overflow: hidden;
  }
  .members .member a {
 	display: inline-block;
@@ -461,6 +460,7 @@
 	width: 225px;
 	background: #000;
 	position: relative;
+	overflow: hidden;
  }
  .members .member a:hover { opacity: 1; }
  .members .member a img 	{ display: block; }
@@ -469,7 +469,7 @@
 	position: absolute;
 	width: 100%;
 	height: 60px;
-	bottom: -1px;
+	bottom: 0px;
 	background: url('profile/title_bg.png') repeat;
 	font-size: 11px;
 	text-align: center;
