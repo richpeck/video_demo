@@ -444,6 +444,7 @@
  .members .member {
 	display: inline-block;
 	vertical-align: top;
+	overflow: hidden;
  }
  .members .member a {
 	display: inline-block;
